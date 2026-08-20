@@ -241,10 +241,10 @@
           "name": "shared-jvm-1.0.0.jar",
           "url": "shared-jvm-1.0.0.jar",
           "size": 1613267,
-          "sha512": "a8be60e00548a58bd5c111c8bfd7f2ebbc5a6441836bca6899b49faf07f5d096c05e90df55a73c532437e7026499197785de1cdecee14e76559b81f0e3fe52d9",
-          "sha256": "ef47ac81983fbcd840286926888e391ae9512da69c4a5481c300cd44135cc0b5",
-          "sha1": "64befbfa64c8164cbf05cac0cf12bed5e7997921",
-          "md5": "ce2a31992e0b5f2fe7d86d206947248b"
+          "sha512": "227698f645e4b52825e5239c080791c409703dd9dd6c4cfbb18ee1735a431cacdac5b3d59d780a9c3a34d051526f7fecc8ae3d484b7b66d8f5d114e481f3a3db",
+          "sha256": "878f27522348164a85a45a3f0ceec1535671836bb1ad70e4f792939facf2b4f1",
+          "sha1": "ff2f799328b0eabff8dadf63768edb4001960f21",
+          "md5": "8a9e12b3a1734ff73cbeb43adfe183eb"
         }
       ]
     },
@@ -516,10 +516,10 @@
           "name": "shared-jvm-1.0.0.jar",
           "url": "shared-jvm-1.0.0.jar",
           "size": 1613267,
-          "sha512": "a8be60e00548a58bd5c111c8bfd7f2ebbc5a6441836bca6899b49faf07f5d096c05e90df55a73c532437e7026499197785de1cdecee14e76559b81f0e3fe52d9",
-          "sha256": "ef47ac81983fbcd840286926888e391ae9512da69c4a5481c300cd44135cc0b5",
-          "sha1": "64befbfa64c8164cbf05cac0cf12bed5e7997921",
-          "md5": "ce2a31992e0b5f2fe7d86d206947248b"
+          "sha512": "227698f645e4b52825e5239c080791c409703dd9dd6c4cfbb18ee1735a431cacdac5b3d59d780a9c3a34d051526f7fecc8ae3d484b7b66d8f5d114e481f3a3db",
+          "sha256": "878f27522348164a85a45a3f0ceec1535671836bb1ad70e4f792939facf2b4f1",
+          "sha1": "ff2f799328b0eabff8dadf63768edb4001960f21",
+          "md5": "8a9e12b3a1734ff73cbeb43adfe183eb"
         }
       ]
     },
@@ -539,10 +539,10 @@
           "name": "shared-jvm-1.0.0-sources.jar",
           "url": "shared-jvm-1.0.0-sources.jar",
           "size": 188113,
-          "sha512": "ade1bf19e2528588e0fe12900135793e3152d14ce4fa05fd707e2f4bdc2f632db16d87d3a5e6671e4176a9050f920bcd555423b90fd4397b25f6b3e95b8b52eb",
-          "sha256": "a6ef4103c05af529c138f38d9957401481e1cf856e159e9054158e7e03ecd984",
-          "sha1": "2860eb63ee71142e70a5d6b31f8c040f076f4ddf",
-          "md5": "95a9758ed312736c1dd01afed92cadac"
+          "sha512": "21711198f39a2101e008d477ed079ed72af85d1b7a1ffa2c4d088d195f838980d9a90ffb48c83b02449ad82ba9bbaf34fc2eb5e002774319ddea474417a1c72a",
+          "sha256": "aeed91cbb85a73c59e6021ef943b741b7422af6cc0f5ffaf820dcf0d7664df18",
+          "sha1": "dc870fdfc4c2b57c37aca347fbb5392e023c120f",
+          "md5": "66547405d30e415c2bc9da4cad109990"
         }
       ]
     }

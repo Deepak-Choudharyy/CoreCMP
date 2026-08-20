@@ -255,10 +255,10 @@
           "name": "shared-iosSimulatorArm64Main-1.0.0.klib",
           "url": "shared-iossimulatorarm64-1.0.0.klib",
           "size": 1337194,
-          "sha512": "3be13a897296d3d784be5bb24c33e8bb0a22ed48f13908f8c991d49369fb83d7c1aaddb168f1f3a8768434c31258a2f7c9a10e6b016f86411a117d8fee7eec49",
-          "sha256": "c78872ef32f9996f474d481ceb514e7d3b529309391f19a3949ffa46c9ce3a0c",
-          "sha1": "f395478d05cbb89f403531db3371baffbca04418",
-          "md5": "6513fbb57ccb423f82d9f56ddb84c35b"
+          "sha512": "688b1e3b973679951082b542739bd48fbed331d8450fe26ccd12520408ff99fc40b09b5efa009735122b82adac7db6208ccd5140fe9f6932695115af5c1b40b5",
+          "sha256": "a2351b9b1735b5fa3a5f233c01915f91f11a7d031dd2308023bbf3750b81b1c6",
+          "sha1": "43c62639afcc1bc94f4783bb4b5471fe6659e314",
+          "md5": "fa44dab9301e19875df4aaa91380f1be"
         }
       ]
     },
@@ -278,10 +278,10 @@
           "name": "shared-iossimulatorarm64-1.0.0-sources.jar",
           "url": "shared-iossimulatorarm64-1.0.0-sources.jar",
           "size": 196116,
-          "sha512": "73f81f32ec938f1b0301722c98f1dbda8875ab95d31148eb4266f6764782fb624ce9b5d27a6bf3e2a7dd80ed5c7f7eff9e060db2b0eb70bf361e2fbf339fe7dd",
-          "sha256": "aac34b4a887973badb44870a9fbdeada4595297b71e93dcb709c90e050a5b867",
-          "sha1": "7a8df01503149b0c0b564691a2cd83525ef860f6",
-          "md5": "1f1450ee239a43b2142f647d56b61284"
+          "sha512": "62c0305dabb195268511ba889721974d817d4060c94cab15d20aa1b358abf582156629a92c6b87848ef562d678869a3201f73a78eee33a32d1b72dd46753df9f",
+          "sha256": "14bcc4e84e6bf35155a0831d38a1ea89ce1f2ed2873919928211ee35c803992e",
+          "sha1": "d6723e41a681aa49a1b04b77b0ce675f093be3c2",
+          "md5": "6cbe4db4dcb6e2affe078401192cc8fa"
         }
       ]
     },
