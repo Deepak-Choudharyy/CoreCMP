@@ -255,10 +255,10 @@
           "name": "shared-iosArm64Main-1.0.0.klib",
           "url": "shared-iosarm64-1.0.0.klib",
           "size": 1337084,
-          "sha512": "5c864e321ac1693bae4e6cb145e2f9919b658cb1bf45d252415e5d7ce004047eec2d3da81c696bafb1ddcc3627126c4025a5740144b8a0234ec02c67be77b96b",
-          "sha256": "060e3bb4771dfee10ae09ffadc096c9bedf231c53f6d3604a6d1701c392db59a",
-          "sha1": "02fa4552a9ffa2436c40cba63eca38c5d8820cf1",
-          "md5": "2a700a2dccdbb5b81ee0dfd841abf779"
+          "sha512": "bf3226418d0044cad1342e7a7f8829d5f612a9cf6fecfd8e1d388fe3ef8f8b204eaaea790b6efa7257b307cc3ab2171db3c5628660b8db8d7f59e480ef183b97",
+          "sha256": "c491c8b8ec166e50b4f86033bd6f23d89415dfe1866a3b8c36c3be78ce56ea82",
+          "sha1": "4039024c2e50fe8faa8b73b84896024133f68cac",
+          "md5": "358aa73437ba6367d3b580539232a541"
         }
       ]
     },
@@ -278,10 +278,10 @@
           "name": "shared-iosarm64-1.0.0-sources.jar",
           "url": "shared-iosarm64-1.0.0-sources.jar",
           "size": 195942,
-          "sha512": "c0828307eb067b632e10a9a32cab97c12758b8d0d4a800bf26e3007cd3ebcad5cc42d96a313798d6b9ef8eff82ac6aa9b15f03dbcfe7d00e4c1cbd9eb00f8d04",
-          "sha256": "b4863ed361359b98dd93617b808ecd5acc7a078a74f28fc6325e27b0c741b259",
-          "sha1": "180ee35b6202ce86b0bb0f40798b408b59d67690",
-          "md5": "feaf4473771ab052ab5c2bae1be1316b"
+          "sha512": "e4325931d3b74bcf9154b9add4c7db4e42d3890e68a8e1043baf65804f42daf916a0d5ce99069cd00ec13d153dce25ab8f2664af0063598f4ad5b98cb2d9c322",
+          "sha256": "0fb97a4b9b22079090695f4df7fa8b87310b0002cc8142a972ea60846e3dd872",
+          "sha1": "d423028bdbb15bdf05b54344f1161213149230f6",
+          "md5": "541c7fbeca6bab4411dc0540946fd1e2"
         }
       ]
     },

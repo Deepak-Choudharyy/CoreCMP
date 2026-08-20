@@ -182,6 +182,27 @@ def main() -> None:
     failures = data.get("failures") or []
     failures_html = render_failures(failures)
     
+    # Build status logic
+    status = data.get("status") or "passing"
+    in_progress_version = data.get("inProgress") or ""
+    
+    if status == "in-progress":
+        build_badge = f"""<span class="status-badge warning">
+            <span class="status-indicator warning"></span> IN PROGRESS
+          </span>"""
+        build_subtext = f"Building version {html.escape(in_progress_version)}..."
+    elif status == "failed":
+        failed_version = failures[0].get("version") if failures else "unknown"
+        build_badge = f"""<span class="status-badge failure">
+            <span class="status-indicator failure"></span> FAILED
+          </span>"""
+        build_subtext = f"Build failed for v{html.escape(failed_version)}"
+    else:
+        build_badge = f"""<span class="status-badge success">
+            <span class="status-indicator success"></span> PASSING
+          </span>"""
+        build_subtext = f"Ready for integration"
+
     # Generate Gradle snippets for multiple tools
     setup_repo_kotlin = f'maven {{ url = uri("{MAVEN_REPO_URL}") }}'
     setup_repo_groovy = f'maven {{ url "{MAVEN_REPO_URL}" }}'
@@ -1157,6 +1178,15 @@ def main() -> None:
           <span class="card-subtext">Artifact:</span>
           <span class="metric-value" style="color: var(--accent-purple);">{ARTIFACT_ID}</span>
         </div>
+      </div>
+
+      <!-- Card 4: Build Status -->
+      <div class="card card-build">
+        <div class="card-label">Latest Build Status</div>
+        <div class="card-value">
+          {build_badge}
+        </div>
+        <div class="card-subtext">{build_subtext}</div>
       </div>
     </section>
 

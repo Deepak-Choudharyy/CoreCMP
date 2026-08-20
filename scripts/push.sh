@@ -17,14 +17,58 @@ echo "New version bumped to: $VERSION"
 
 DATE_ISO="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 
-# 2. Compile and build Maven artifacts locally
-echo "Compiling and building Maven artifacts locally..."
-./gradlew publishAllPublicationsToMavenRepository
-
-# 3. Generate release dashboard index.html and versions.json at the root
-echo "Generating dashboard page..."
-# Get temporary commit hash (will update after commit)
+# 2. Update manifest to In Progress and push to remote
+echo "Marking build as IN PROGRESS on dashboard..."
 TEMP_COMMIT_SHA="$(git rev-parse HEAD 2>/dev/null || echo "manual")"
+python3 scripts/update-version-manifest.py \
+  --manifest versions.json \
+  --version "$VERSION" \
+  --in-progress \
+  --commit "$TEMP_COMMIT_SHA" \
+  --published-at "$DATE_ISO"
+
+cp versions.json maven-repo/versions.json
+cp index.html maven-repo/index.html
+touch .nojekyll
+
+git add versions.json index.html maven-repo/versions.json maven-repo/index.html version.properties shared/src/commonMain/kotlin/com/corecmp/shared/internal/CoreCmpBuildInfo.kt
+git commit -m "Build In Progress: CoreCmp $VERSION" || true
+git push origin main || echo "Warning: Could not push In Progress state, continuing build..."
+
+# 3. Compile and build Maven artifacts locally
+echo "Compiling and building Maven artifacts locally..."
+if ! ./gradlew publishAllPublicationsToMavenRepository > gradle-build.log 2>&1; then
+  echo "Gradle compilation failed! Recording failure..."
+  
+  mkdir -p maven-repo/logs
+  FAILED_LOG="logs/build-${VERSION}-failed.log"
+  cp gradle-build.log "maven-repo/${FAILED_LOG}"
+  
+  # Update manifest with failure status
+  python3 scripts/update-version-manifest.py \
+    --manifest versions.json \
+    --version "$VERSION" \
+    --record-failure \
+    --failed-log "$FAILED_LOG" \
+    --commit "$TEMP_COMMIT_SHA" \
+    --published-at "$DATE_ISO"
+    
+  cp versions.json maven-repo/versions.json
+  cp index.html maven-repo/index.html
+  
+  # Stage and push failed status and log file
+  git add versions.json index.html maven-repo/versions.json maven-repo/index.html "maven-repo/${FAILED_LOG}"
+  git commit --amend -m "Build Failed: CoreCmp $VERSION" || true
+  git push origin main --force
+  
+  rm -f gradle-build.log
+  echo "Error: Build failed. Error log uploaded to dashboard."
+  exit 1
+fi
+rm -f gradle-build.log
+
+# 4. Generate release dashboard index.html and versions.json at the root
+echo "Generating success dashboard page..."
 python3 scripts/update-version-manifest.py \
   --manifest versions.json \
   --version "$VERSION" \
@@ -33,17 +77,15 @@ python3 scripts/update-version-manifest.py \
   --commit "$TEMP_COMMIT_SHA" \
   --scan-maven-repo
 
-# Copy to maven-repo folder for backup/hosting consistency
 cp versions.json maven-repo/versions.json
 cp index.html maven-repo/index.html
-touch .nojekyll
 
-# 4. Stage and commit everything
+# 5. Stage and commit success build
 echo "Staging all changes..."
 git add .
 
 echo "Committing release $VERSION..."
-git commit -m "Publish CoreCmp $VERSION: $COMMIT_MSG" || echo "No changes to commit."
+git commit --amend -m "Publish CoreCmp $VERSION: $COMMIT_MSG" || echo "No changes to commit."
 
 # Update the manifest with the final commit hash
 FINAL_COMMIT_SHA="$(git rev-parse HEAD)"
@@ -62,7 +104,7 @@ cp index.html maven-repo/index.html
 git add versions.json index.html maven-repo/versions.json maven-repo/index.html
 git commit --amend --no-edit || true
 
-# 5. Pull & Rebase with conflict resolution for generated files
+# 6. Pull & Rebase with conflict resolution for generated files
 echo "Pulling latest commits from remote..."
 if ! git pull --rebase origin main; then
   echo "Conflicts detected in auto-generated files. Resolving automatically..."
@@ -80,7 +122,7 @@ if ! git pull --rebase origin main; then
   git -c core.editor=true rebase --continue
 fi
 
-# 6. Push to main branch
+# 7. Push to main branch
 echo "Pushing to main branch..."
 git push origin main
 

@@ -253,10 +253,10 @@
           "name": "shared-metadata-1.0.0.jar",
           "url": "shared-1.0.0.jar",
           "size": 142182,
-          "sha512": "0a62c76c6bda8adf6ed7525450f72545e8b8ab5183a227bbd3e500d271d47e3cd5d4a1322612335a787089ed1cd38aeaa63a04da7efe9c56caf71b2b54e6ac10",
-          "sha256": "dbb76def25ecb9baced7e22ff060472a1e4b327013bb4e160bc659d495efd301",
-          "sha1": "f3969fe341b5ff1171b5dac085a238bcbf190c5c",
-          "md5": "d1952810cd7ad9d76d13aa2fca56b839"
+          "sha512": "abe05d728fc2e6845b07fd9f2bf81f96510705cc90999e4152c25385205e8a55419e0a578138b702363285dd259b28042ac9b30f1cf39da2c5415c41e7f1292d",
+          "sha256": "5f7c77367112c7c703b55bf1debb7b67b9f930d4c068e82a9baeed7f3418c295",
+          "sha1": "0a4150ffce404fbb5b488b1f90a8b3e132c0fce0",
+          "md5": "e01de12bd00b543a3a6ba1076b120eb1"
         }
       ]
     },
@@ -275,10 +275,10 @@
           "name": "shared-kotlin-1.0.0-sources.jar",
           "url": "shared-1.0.0-sources.jar",
           "size": 194558,
-          "sha512": "048044d800059bc46b83f487be8d535482fca1b35538eb2167d7e657a4cb7e04b8cf3d8e6f002b5133bbe234e84f354c037ff719785c50da3e8c552e2324fb54",
-          "sha256": "0e2470e2a3dd2346881609c550d46d17644434684684f1fa78a8b75c4ed03e5c",
-          "sha1": "a5e0b6bd4ace93e4bb440a794ea6151498cc3570",
-          "md5": "7b16f3ee06f9856b4847e7803565590e"
+          "sha512": "770c4138b0b22f27d6b6ab39081724b71a659455d92a8075cc62af1b754ff9466f23b4c8d4e17da9187dff7ed5e419e8cf1ff95a9b0cae62d48f3d9ad6bba259",
+          "sha256": "12042b69cc6e0827a0d69a5ae59e6eff7067cf4253087d6f0c9a283bd94f20de",
+          "sha1": "2144b5631c9747d8d9e7826714fc783a78e85b11",
+          "md5": "a61ef0594516b74e9dc4ad8164e23eb0"
         }
       ]
     },

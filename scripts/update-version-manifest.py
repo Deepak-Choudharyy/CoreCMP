@@ -193,6 +193,7 @@ def main() -> None:
     parser.add_argument("--backfill-git", action="store_true", help="Fill missing releases from git tags")
     parser.add_argument("--record-failure", action="store_true", help="Record this run as a failure")
     parser.add_argument("--failed-log", default="", help="Path to the failed build log file relative to maven-repo")
+    parser.add_argument("--in-progress", action="store_true", help="Record that a build is currently in progress")
     parser.add_argument(
         "--scan-maven-repo",
         action="store_true",
@@ -211,7 +212,13 @@ def main() -> None:
         data = backfill_releases_from_git(data)
 
     if args.version:
-        if args.record_failure:
+        if args.in_progress:
+            data["inProgress"] = args.version
+            data["status"] = "in-progress"
+            data["updatedAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        elif args.record_failure:
+            data["inProgress"] = ""
+            data["status"] = "failed"
             failures = list(data.get("failures") or [])
             failures = [f for f in failures if f.get("version") != args.version]
             failures.insert(0, {
@@ -223,6 +230,8 @@ def main() -> None:
             data["failures"] = failures[:10]
             data["updatedAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         else:
+            data["inProgress"] = ""
+            data["status"] = "passing"
             # Clean from failures list if successful
             failures = list(data.get("failures") or [])
             failures = [f for f in failures if f.get("version") != args.version]
