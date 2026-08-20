@@ -378,9 +378,21 @@ def main() -> None:
 
     .dashboard-grid {{
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.5rem;
       margin-bottom: 4.5rem;
+    }}
+
+    @media (min-width: 640px) {{
+      .dashboard-grid {{
+        grid-template-columns: repeat(2, 1fr);
+      }}
+    }}
+
+    @media (min-width: 1024px) {{
+      .dashboard-grid {{
+        grid-template-columns: repeat(4, 1fr);
+      }}
     }}
 
     .card {{
@@ -417,6 +429,7 @@ def main() -> None:
     .card-latest::after {{ background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }}
     .card-stats::after {{ background: linear-gradient(90deg, var(--accent-indigo), var(--accent-purple)); }}
     .card-metrics::after {{ background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo)); }}
+    .card-build::after {{ background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple)); }}
 
     .card-label {{
       font-size: 0.85rem;
@@ -469,6 +482,27 @@ def main() -> None:
       background: var(--accent-green); 
       box-shadow: 0 0 10px var(--accent-green); 
       animation: pulse 2s infinite; 
+    }}
+
+    .status-badge.warning {{
+      background: rgba(249, 115, 22, 0.08);
+      color: #fb923c;
+      border-color: rgba(249, 115, 22, 0.15);
+    }}
+    .status-indicator.warning {{
+      background: var(--accent-orange);
+      box-shadow: 0 0 10px var(--accent-orange);
+      animation: pulse 2s infinite;
+    }}
+
+    .status-badge.failure {{
+      background: rgba(244, 63, 94, 0.08);
+      color: #fb7185;
+      border-color: rgba(244, 63, 94, 0.15);
+    }}
+    .status-indicator.failure {{
+      background: var(--accent-red);
+      box-shadow: 0 0 10px var(--accent-red);
     }}
 
     @keyframes pulse {{

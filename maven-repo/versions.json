@@ -1,8 +1,9 @@
 {
   "groupId": "com.corecmp",
   "artifactId": "shared",
-  "latest": "1.0.0.1-rc-006",
+  "latest": "1.0.0.1-rc-007",
   "versions": [
+    "1.0.0.1-rc-007",
     "1.0.0.1-rc-006",
     "1.0.0.1-rc-005",
     "1.0.0.1-rc-004",
@@ -11,6 +12,12 @@
     "1.0.0"
   ],
   "releases": [
+    {
+      "version": "1.0.0.1-rc-007",
+      "message": "Add Platform compatibility and code playground to dashboard",
+      "publishedAt": "2026-08-20T12:00:10Z",
+      "commit": "5692d33df8dc126c8735e514df868f4d11e2868a"
+    },
     {
       "version": "1.0.0.1-rc-006",
       "message": "Add Platform compatibility and code playground to dashboard",
@@ -49,8 +56,8 @@
     }
   ],
   "repository": "https://deepak-choudharyy.github.io/CoreCMP/maven-repo/",
-  "updatedAt": "2026-08-20T12:00:10Z",
+  "updatedAt": "2026-08-20T12:00:46Z",
   "failures": [],
-  "inProgress": "1.0.0.1-rc-007",
-  "status": "in-progress"
+  "inProgress": "",
+  "status": "passing"
 }
