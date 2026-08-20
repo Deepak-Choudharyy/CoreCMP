@@ -157,9 +157,21 @@
 
     .dashboard-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.5rem;
       margin-bottom: 4.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .dashboard-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
     .card {
@@ -196,6 +208,7 @@
     .card-latest::after { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
     .card-stats::after { background: linear-gradient(90deg, var(--accent-indigo), var(--accent-purple)); }
     .card-metrics::after { background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo)); }
+    .card-build::after { background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple)); }
 
     .card-label {
       font-size: 0.85rem;
@@ -248,6 +261,27 @@
       background: var(--accent-green); 
       box-shadow: 0 0 10px var(--accent-green); 
       animation: pulse 2s infinite; 
+    }
+
+    .status-badge.warning {
+      background: rgba(249, 115, 22, 0.08);
+      color: #fb923c;
+      border-color: rgba(249, 115, 22, 0.15);
+    }
+    .status-indicator.warning {
+      background: var(--accent-orange);
+      box-shadow: 0 0 10px var(--accent-orange);
+      animation: pulse 2s infinite;
+    }
+
+    .status-badge.failure {
+      background: rgba(244, 63, 94, 0.08);
+      color: #fb7185;
+      border-color: rgba(244, 63, 94, 0.15);
+    }
+    .status-indicator.failure {
+      background: var(--accent-red);
+      box-shadow: 0 0 10px var(--accent-red);
     }
 
     @keyframes pulse {
@@ -936,7 +970,7 @@
         <div class="card-value" style="font-family: var(--font-mono); color: #34d399; font-size: 1.8rem;">
           1.0.0.1-rc-006
         </div>
-        <div class="card-subtext">Synchronized: <span style="color: var(--text-primary)">20 Aug 2026, 11:53 UTC</span></div>
+        <div class="card-subtext">Synchronized: <span style="color: var(--text-primary)">20 Aug 2026, 12:00 UTC</span></div>
       </div>
 
       <!-- Card 2: Release Interval -->
@@ -967,7 +1001,7 @@
             <span class="status-indicator warning"></span> IN PROGRESS
           </span>
         </div>
-        <div class="card-subtext">Building version 1.0.0.1-rc-006...</div>
+        <div class="card-subtext">Building version 1.0.0.1-rc-007...</div>
       </div>
     </section>
 
