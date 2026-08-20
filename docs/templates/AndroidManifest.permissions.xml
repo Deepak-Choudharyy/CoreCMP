@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  HOST APP ONLY — copy permissions you actually need into your app's AndroidManifest.xml.
+  CoreCmp library does NOT merge these. This prevents Play Store rejection for unused permissions.
+
+  Always include for networking:
+-->
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+<!-- Camera (KYC photo capture) -->
+<!-- <uses-permission android:name="android.permission.CAMERA" /> -->
+
+<!-- Location (branch finder — foreground only with CoreCmp) -->
+<!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> -->
+<!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
+
+<!-- Notifications (Android 13+) -->
+<!-- <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> -->
+
+<!-- Contacts (only if you read contacts — high scrutiny on Play Console) -->
+<!-- <uses-permission android:name="android.permission.READ_CONTACTS" /> -->
+
+<!-- Microphone (only if you record audio) -->
+<!-- <uses-permission android:name="android.permission.RECORD_AUDIO" /> -->
+
+<!--
+  DO NOT ADD for CoreCmp picker flows:
+  - READ_MEDIA_IMAGES / READ_MEDIA_VIDEO
+  - READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE
+  - MANAGE_EXTERNAL_STORAGE
+  - READ_SMS / RECEIVE_SMS
+-->

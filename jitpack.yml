@@ -1,0 +1,8 @@
+# JitPack fast-build profile (Linux VM) — target ~3-6 min
+# iOS native compile skipped via JITPACK=true in build.gradle.kts
+jdk:
+  - openjdk17
+env:
+  GRADLE_OPTS: "-Xmx4g -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8"
+install:
+  - ./gradlew :shared:publishToMavenLocal --parallel --build-cache --no-scan

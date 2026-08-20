@@ -1,0 +1,44 @@
+CREATE TABLE apiQueueEntity (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    endpoint TEXT NOT NULL,
+    method TEXT NOT NULL,
+    bodyPayload TEXT,
+    headers TEXT,
+    createdAt INTEGER NOT NULL
+);
+
+CREATE TABLE imageChunkEntity (
+    id TEXT PRIMARY KEY NOT NULL,
+    fileId TEXT NOT NULL,
+    chunkIndex INTEGER NOT NULL,
+    totalChunks INTEGER NOT NULL,
+    chunkData BLOB NOT NULL,
+    status TEXT NOT NULL,
+    uploadUrl TEXT NOT NULL
+);
+
+insertApiQueue:
+INSERT INTO apiQueueEntity(endpoint, method, bodyPayload, headers, createdAt)
+VALUES (?, ?, ?, ?, ?);
+
+getAllApiQueue:
+SELECT * FROM apiQueueEntity ORDER BY createdAt ASC;
+
+deleteApiQueueById:
+DELETE FROM apiQueueEntity WHERE id = ?;
+
+insertImageChunk:
+INSERT INTO imageChunkEntity(id, fileId, chunkIndex, totalChunks, chunkData, status, uploadUrl)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+getChunksByFileId:
+SELECT * FROM imageChunkEntity WHERE fileId = ? ORDER BY chunkIndex ASC;
+
+getPendingChunks:
+SELECT * FROM imageChunkEntity WHERE status = 'PENDING' ORDER BY fileId, chunkIndex ASC;
+
+updateChunkStatus:
+UPDATE imageChunkEntity SET status = ? WHERE id = ?;
+
+deleteChunksByFileId:
+DELETE FROM imageChunkEntity WHERE fileId = ?;
