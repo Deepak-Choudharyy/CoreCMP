@@ -1,6 +1,6 @@
 package com.corecmp.shared.network
 
-import com.corecmp.shared.api.EazyLogger
+import com.corecmp.shared.api.CoreCmpLogger
 import com.corecmp.shared.api.HttpClientProvider
 import com.corecmp.shared.storage.SocketLogItem
 import com.corecmp.shared.storage.SocketLogStorage
@@ -46,7 +46,7 @@ data class SocketMessage(
  * displays real-time console logs, emits real-time events via SharedFlow / Flow streams,
  * and maintains a 10MB persistent log file.
  */
-class EazySocketManager(
+class CoreCmpSocketManager(
     private val client: HttpClient = HttpClientProvider.client,
     val logStorage: SocketLogStorage = SocketLogStorage()
 ) {
@@ -96,7 +96,7 @@ class EazySocketManager(
         var keepAlive = true
         while (keepAlive && !manualDisconnects.contains(url) && currentCoroutineContext().isActive) {
             // Log connection start
-            EazyLogger.logSocketEvent(
+            CoreCmpLogger.logSocketEvent(
                 url = url,
                 event = "CONNECT",
                 direction = "CONNECT",
@@ -142,7 +142,7 @@ class EazySocketManager(
                                 )
 
                                 // Display console log & persist to 10MB log storage
-                                EazyLogger.logSocketEvent(
+                                CoreCmpLogger.logSocketEvent(
                                     url = url,
                                     event = eventName,
                                     direction = "RECEIVED",
@@ -162,7 +162,7 @@ class EazySocketManager(
                         }
                     } finally {
                         activeSessions.remove(url)
-                        EazyLogger.logSocketEvent(
+                        CoreCmpLogger.logSocketEvent(
                             url = url,
                             event = "DISCONNECT",
                             direction = "DISCONNECT"
@@ -184,7 +184,7 @@ class EazySocketManager(
                     }
                 }
             } catch (e: Exception) {
-                EazyLogger.logSocketEvent(
+                CoreCmpLogger.logSocketEvent(
                     url = url,
                     event = "ERROR",
                     direction = "ERROR",
@@ -210,7 +210,7 @@ class EazySocketManager(
             if (manualDisconnects.contains(url) || !autoReconnect) {
                 keepAlive = false
             } else {
-                EazyLogger.d("🔄 Socket disconnected unexpectedly. Reconnecting in ${reconnectDelayMs}ms...")
+                CoreCmpLogger.d("🔄 Socket disconnected unexpectedly. Reconnecting in ${reconnectDelayMs}ms...")
                 delay(reconnectDelayMs)
             }
         }
@@ -229,7 +229,7 @@ class EazySocketManager(
         val event = eventName ?: extractEventName(message)
 
         // Log sent event
-        EazyLogger.logSocketEvent(
+        CoreCmpLogger.logSocketEvent(
             url = url,
             event = event,
             direction = "SENT",
@@ -275,7 +275,7 @@ class EazySocketManager(
                             data = rawText,
                             direction = "RECEIVED"
                         )
-                        EazyLogger.logSocketEvent(url = url, event = echoEvent, direction = "RECEIVED", responseData = rawText)
+                        CoreCmpLogger.logSocketEvent(url = url, event = echoEvent, direction = "RECEIVED", responseData = rawText)
                         logStorage.logEvent(url = url, event = echoEvent, direction = "RECEIVED", responseData = rawText)
                         sharedFlow.emit(echoMsg)
                         globalSharedFlow.emit(echoMsg)
@@ -348,7 +348,7 @@ class EazySocketManager(
                 session.close(CloseReason(CloseReason.Codes.NORMAL, "Disconnected by client"))
             } catch (_: Exception) {}
         }
-        EazyLogger.logSocketEvent(
+        CoreCmpLogger.logSocketEvent(
             url = url,
             event = "DISCONNECT",
             direction = "DISCONNECT"

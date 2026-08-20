@@ -15,7 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.corecmp.shared.theme.LocalEazyColors
+import com.corecmp.shared.theme.LocalCoreCmpColors
 import com.corecmp.shared.validation.PasswordStrength
 import com.corecmp.shared.validation.evaluatePasswordStrength
 
@@ -24,7 +24,7 @@ fun PasswordStrengthMeter(
     password: String,
     modifier: Modifier = Modifier,
 ) {
-    val colors = LocalEazyColors.current
+    val colors = LocalCoreCmpColors.current
     val strength = evaluatePasswordStrength(password)
     val (label, filledBars, barColor) = when (strength) {
         PasswordStrength.WEAK -> Triple("Weak", 1, colors.error)

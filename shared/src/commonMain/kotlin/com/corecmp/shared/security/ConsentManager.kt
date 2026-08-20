@@ -11,7 +11,7 @@ data class ConsentRecord(
 
 class ConsentManager(
     private val storage: SecureStorage = SecureStorage(),
-    private val keyPrefix: String = "eazy_cmp_consent_",
+    private val keyPrefix: String = "corecmp_cmp_consent_",
 ) {
     fun hasConsent(purpose: String, requiredVersion: String): Boolean {
         val savedVersion = storage.getString(key(purpose, "version"))

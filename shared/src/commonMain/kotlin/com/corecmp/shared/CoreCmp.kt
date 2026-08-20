@@ -1,12 +1,12 @@
 package com.corecmp.shared
 
-import com.corecmp.shared.analytics.EazyAnalytics
-import com.corecmp.shared.analytics.EazyCrash
-import com.corecmp.shared.analytics.NoOpEazyAnalytics
-import com.corecmp.shared.analytics.NoOpEazyCrash
+import com.corecmp.shared.analytics.CoreCmpAnalytics
+import com.corecmp.shared.analytics.CoreCmpCrash
+import com.corecmp.shared.analytics.NoOpCoreCmpAnalytics
+import com.corecmp.shared.analytics.NoOpCoreCmpCrash
 import com.corecmp.shared.api.ApiClient
 import com.corecmp.shared.api.ApiConfig
-import com.corecmp.shared.api.EazyLogger
+import com.corecmp.shared.api.CoreCmpLogger
 import com.corecmp.shared.auth.AppleAuth
 import com.corecmp.shared.auth.GoogleAuth
 import com.corecmp.shared.auth.GuestModeManager
@@ -33,7 +33,7 @@ import com.corecmp.shared.security.BackgroundLockManager
 import com.corecmp.shared.security.ConsentManager
 import com.corecmp.shared.security.SessionTimeoutManager
 import com.corecmp.shared.share.ShareManager
-import com.corecmp.shared.network.EazySocketManager
+import com.corecmp.shared.network.CoreCmpSocketManager
 import com.corecmp.shared.storage.ApiCacheStorage
 import com.corecmp.shared.storage.SocketLogStorage
 import com.corecmp.shared.storage.FormDraftManager
@@ -82,7 +82,7 @@ object CoreCmp {
 
     // --- Network & Sockets ---
     val api: ApiClient by lazy { ApiClient() }
-    val socket: EazySocketManager by lazy { EazySocketManager() }
+    val socket: CoreCmpSocketManager by lazy { CoreCmpSocketManager() }
     val offlineQueue: OfflineQueueManager by lazy { OfflineQueueManager() }
     val requestDeduplicator: RequestDeduplicator by lazy { RequestDeduplicator() }
 
@@ -113,8 +113,8 @@ object CoreCmp {
     val notifications: InAppNotificationStore by lazy { InAppNotificationStore() }
 
     // --- Analytics (host provides implementation) ---
-    var analytics: EazyAnalytics = NoOpEazyAnalytics
-    var crashReporter: EazyCrash = NoOpEazyCrash
+    var analytics: CoreCmpAnalytics = NoOpCoreCmpAnalytics
+    var crashReporter: CoreCmpCrash = NoOpCoreCmpCrash
 
     // --- Placeholders ---
     var defaultImagePlaceholder: Placeholder = Placeholder.LottieUrl(
@@ -185,10 +185,10 @@ object CoreCmp {
     }
 
     var isDebugEnabled: Boolean
-        get() = EazyLogger.isDebugEnabled
-        set(value) { EazyLogger.isDebugEnabled = value }
+        get() = CoreCmpLogger.isDebugEnabled
+        set(value) { CoreCmpLogger.isDebugEnabled = value }
 
-    fun init(context: Any? = null, settingsName: String = "eazy_cmp_prefs") {
+    fun init(context: Any? = null, settingsName: String = "core_cmp_prefs") {
         platformInit(context, settingsName)
     }
 }

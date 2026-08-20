@@ -19,8 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.corecmp.shared.theme.LocalEazyColors
-import com.corecmp.shared.theme.LocalEazyTypography
+import com.corecmp.shared.theme.LocalCoreCmpColors
+import com.corecmp.shared.theme.LocalCoreCmpTypography
 
 enum class InfoBannerVariant {
     INFO, WARNING, ERROR,
@@ -33,8 +33,8 @@ fun InfoBanner(
     variant: InfoBannerVariant = InfoBannerVariant.INFO,
     onDismiss: (() -> Unit)? = null,
 ) {
-    val colors = LocalEazyColors.current
-    val typography = LocalEazyTypography.current
+    val colors = LocalCoreCmpColors.current
+    val typography = LocalCoreCmpTypography.current
     val (bg, fg, icon) = when (variant) {
         InfoBannerVariant.INFO -> Triple(colors.info.copy(alpha = 0.12f), colors.info, Icons.Default.Info)
         InfoBannerVariant.WARNING -> Triple(colors.warning.copy(alpha = 0.18f), colors.onWarning, Icons.Default.Warning)

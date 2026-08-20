@@ -45,7 +45,7 @@ This document outlines the detailed technical strategies to improve the planned 
 ## 5. UI Customization & Theme Injection (Design System)
 *   **Current State**: UI widgets use hardcoded custom theme colors (like `whiteColor`, `borderBGColor`, etc.).
 *   **Technical Strategy to Improve**:
-    *   **EazyTheme Wrapper**: Define an `EazyTheme` composable wrapper. Developers can wrap their layouts in `EazyTheme(colors = EazyColors(...))` to override widget colors.
+    *   **CoreCmpTheme Wrapper**: Define an `CoreCmpTheme` composable wrapper. Developers can wrap their layouts in `CoreCmpTheme(colors = CoreCmpColors(...))` to override widget colors.
     *   **Material 3 Fallback**: Ensure that if no custom colors are provided, widgets automatically fall back to the host project's default `MaterialTheme.colorScheme` properties.
 
 ---

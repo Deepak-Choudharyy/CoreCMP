@@ -5,10 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.corecmp.shared.storage.SecureStorage
 
-private const val KEY_LOCK_FONT = "eazy_cmp_display_lock_font"
-private const val KEY_LOCK_DENSITY = "eazy_cmp_display_lock_density"
-private const val KEY_FIXED_FONT_SCALE = "eazy_cmp_display_fixed_font_scale"
-private const val KEY_REFERENCE_DENSITY = "eazy_cmp_display_reference_density"
+private const val KEY_LOCK_FONT = "corecmp_cmp_display_lock_font"
+private const val KEY_LOCK_DENSITY = "corecmp_cmp_display_lock_density"
+private const val KEY_FIXED_FONT_SCALE = "corecmp_cmp_display_fixed_font_scale"
+private const val KEY_REFERENCE_DENSITY = "corecmp_cmp_display_reference_density"
 
 class DisplaySettingsManager internal constructor(
     private val storage: SecureStorage = SecureStorage(),

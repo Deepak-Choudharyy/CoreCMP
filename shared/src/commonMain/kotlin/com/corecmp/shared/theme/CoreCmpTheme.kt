@@ -13,8 +13,8 @@ import com.corecmp.shared.CoreCmp
 @Composable
 fun CoreCmpTheme(
     themeManager: ThemeManager = CoreCmp.theme,
-    colors: EazyColors = LocalEazyColors.current,
-    typography: EazyTypography = LocalEazyTypography.current,
+    colors: CoreCmpColors = LocalCoreCmpColors.current,
+    typography: CoreCmpTypography = LocalCoreCmpTypography.current,
     materialTypography: Typography? = null,
     content: @Composable () -> Unit,
 ) {
@@ -52,8 +52,8 @@ fun CoreCmpTheme(
     }
 
     CompositionLocalProvider(
-        LocalEazyColors provides colors,
-        LocalEazyTypography provides typography,
+        LocalCoreCmpColors provides colors,
+        LocalCoreCmpTypography provides typography,
     ) {
         MaterialTheme(
             colorScheme = colorScheme,

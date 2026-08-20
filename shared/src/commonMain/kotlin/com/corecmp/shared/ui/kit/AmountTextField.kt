@@ -11,7 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import com.corecmp.shared.theme.LocalEazyTypography
+import com.corecmp.shared.theme.LocalCoreCmpTypography
 import com.corecmp.shared.ui.OutLinedSimpleTextField
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -25,7 +25,7 @@ fun AmountTextField(
     enabled: Boolean = true,
     error: String? = null,
 ) {
-    val typography = LocalEazyTypography.current
+    val typography = LocalCoreCmpTypography.current
     var display by remember(value) { mutableStateOf(formatAmountDisplay(value, currencySymbol)) }
 
     OutLinedSimpleTextField(

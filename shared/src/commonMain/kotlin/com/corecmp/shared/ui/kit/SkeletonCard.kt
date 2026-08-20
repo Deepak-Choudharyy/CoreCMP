@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.corecmp.shared.theme.LocalEazyColors
+import com.corecmp.shared.theme.LocalCoreCmpColors
 import com.corecmp.shared.ui.shimmer
 
 @Composable
@@ -21,7 +21,7 @@ fun SkeletonCard(
     lines: Int = 3,
     lineHeight: Int = 14,
 ) {
-    val colors = LocalEazyColors.current
+    val colors = LocalCoreCmpColors.current
     Card(
         modifier = modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = colors.surfaceMuted),

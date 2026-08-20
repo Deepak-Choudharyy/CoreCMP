@@ -6,8 +6,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.corecmp.shared.storage.SecureStorage
 
-private const val KEY_LOCK_ENABLED = "eazy_cmp_lock_enabled"
-private const val KEY_PIN_HASH = "eazy_cmp_pin_hash"
+private const val KEY_LOCK_ENABLED = "corecmp_cmp_lock_enabled"
+private const val KEY_PIN_HASH = "corecmp_cmp_pin_hash"
 
 class AppLockManager internal constructor(
     private val storage: SecureStorage = SecureStorage(),

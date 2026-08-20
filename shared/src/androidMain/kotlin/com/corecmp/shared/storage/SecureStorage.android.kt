@@ -8,7 +8,7 @@ import com.corecmp.shared.api.appContext
 actual class SecureStorage actual constructor() {
     private val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
     private val sharedPreferences = EncryptedSharedPreferences.create(
-        "secure_eazy_cmp_prefs",
+        "secure_core_cmp_prefs",
         masterKeyAlias,
         appContext,
         EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,

@@ -10,8 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.corecmp.shared.theme.LocalEazyColors
-import com.corecmp.shared.theme.LocalEazyTypography
+import com.corecmp.shared.theme.LocalCoreCmpColors
+import com.corecmp.shared.theme.LocalCoreCmpTypography
 
 enum class StatusChipVariant {
     NEUTRAL, SUCCESS, WARNING, ERROR, INFO,
@@ -25,8 +25,8 @@ fun StatusChip(
     backgroundColor: Color? = null,
     contentColor: Color? = null,
 ) {
-    val colors = LocalEazyColors.current
-    val typography = LocalEazyTypography.current
+    val colors = LocalCoreCmpColors.current
+    val typography = LocalCoreCmpTypography.current
     val (bg, fg) = when (variant) {
         StatusChipVariant.SUCCESS -> colors.success to colors.onSuccess
         StatusChipVariant.WARNING -> colors.warning to colors.onWarning

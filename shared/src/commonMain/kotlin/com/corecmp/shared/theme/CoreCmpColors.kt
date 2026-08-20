@@ -3,7 +3,7 @@ package com.corecmp.shared.theme
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
 
-data class EazyColors(
+data class CoreCmpColors(
     val primary: Color = Color(0xFF2196F3),
     val onPrimary: Color = whiteColor,
     val success: Color = Color(0xFF4CAF50),
@@ -20,4 +20,4 @@ data class EazyColors(
     val skeletonHighlight: Color = grayColor.copy(alpha = 0.35f),
 )
 
-val LocalEazyColors = compositionLocalOf { EazyColors() }
+val LocalCoreCmpColors = compositionLocalOf { CoreCmpColors() }

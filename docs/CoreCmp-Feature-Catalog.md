@@ -65,12 +65,12 @@
 | IMP-028 | RequestOptions | Retry-on-reconnect when offline |
 | IMP-029 | Multipart upload | File upload via FilePart + PickedFile |
 | IMP-030 | Mock API responses | Endpoint-level mock JSON |
-| IMP-031 | EazyLogger | Request / response / error logging |
+| IMP-031 | CoreCmpLogger | Request / response / error logging |
 | IMP-032 | applyDefaults() | Auto headers, token, base URL |
 | IMP-033 | mergeBody() | Merge default + request body fields |
 | IMP-034 | BaseViewModel | collectApi() Flow helper |
 | IMP-035 | SharedViewModel | Cross-screen typed JSON storage |
-| IMP-036 | Koin eazyModule() | Dependency injection module |
+| IMP-036 | Koin coreCmpModule() | Dependency injection module |
 | IMP-037 | HttpClientProvider | Shared Ktor client all platforms |
 
 ---
@@ -255,8 +255,8 @@
 | IMP-127 | rememberDebouncedClick() | Composable debounced click |
 | IMP-128 | RateLimiter | API / action rate limiter class |
 | IMP-129 | debounce() | Non-composable debounce helper |
-| IMP-130 | EazyAccessibility labels | Default contentDescription constants |
-| IMP-131 | eazyContentDescription() | Modifier accessibility helper |
+| IMP-130 | CoreCmpAccessibility labels | Default contentDescription constants |
+| IMP-131 | coreCmpContentDescription() | Modifier accessibility helper |
 
 ---
 
@@ -390,8 +390,8 @@
 
 | ID | Feature | Description |
 |----|---------|-------------|
-| PLN-088 | EazyColors injection | Host brand colors override |
-| PLN-089 | EazyTypography injection | Custom font family support |
+| PLN-088 | CoreCmpColors injection | Host brand colors override |
+| PLN-089 | CoreCmpTypography injection | Custom font family support |
 | PLN-090 | White-label JSON theme | Per-client theme from JSON file |
 | PLN-091 | High contrast mode | Accessibility high contrast theme |
 | PLN-092 | Reduce motion mode | Disable animations per system setting |
@@ -512,8 +512,8 @@
 
 | ID | Feature | Description |
 |----|---------|-------------|
-| PLN-161 | EazyAnalytics interface | Host picks Firebase/Mixpanel |
-| PLN-162 | EazyCrash interface | Sentry/Crashlytics wrapper |
+| PLN-161 | CoreCmpAnalytics interface | Host picks Firebase/Mixpanel |
+| PLN-162 | CoreCmpCrash interface | Sentry/Crashlytics wrapper |
 | PLN-163 | Screen view auto-tracker | Track screen on navigation |
 | PLN-164 | Event builder API | track(name, params) helper |
 | PLN-165 | User properties setter | Attach properties to all events |

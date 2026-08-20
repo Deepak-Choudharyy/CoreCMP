@@ -5,11 +5,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 /**
- * Convenience WebSocket client wrapper around EazySocketManager.
+ * Convenience WebSocket client wrapper around CoreCmpSocketManager.
  * Automatically logs sent and received frames and stores up to 10MB of event logs.
  */
 class WebSocketClient(
-    private val socketManager: EazySocketManager = EazySocketManager(client = HttpClientProvider.client)
+    private val socketManager: CoreCmpSocketManager = CoreCmpSocketManager(client = HttpClientProvider.client)
 ) {
 
     fun connect(

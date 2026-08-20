@@ -141,12 +141,12 @@ def build():
             ("RequestOptions", "Retry-on-reconnect offline"),
             ("Multipart upload", "FilePart + PickedFile upload"),
             ("Mock API responses", "Endpoint mock JSON"),
-            ("EazyLogger", "Request/response/error logs"),
+            ("CoreCmpLogger", "Request/response/error logs"),
             ("applyDefaults()", "Auto headers and token"),
             ("mergeBody()", "Merge default request fields"),
             ("BaseViewModel", "collectApi() Flow helper"),
             ("SharedViewModel", "Cross-screen JSON storage"),
-            ("Koin eazyModule()", "Dependency injection"),
+            ("Koin coreCmpModule()", "Dependency injection"),
             ("HttpClientProvider", "Shared Ktor client"),
         ]),
         ("A3. UI Components (23)", 38, [
@@ -266,8 +266,8 @@ def build():
             ("rememberDebouncedClick()", "Debounced click"),
             ("RateLimiter", "Action rate limiter"),
             ("debounce()", "Debounce helper"),
-            ("EazyAccessibility", "Default a11y labels"),
-            ("eazyContentDescription()", "A11y modifier"),
+            ("CoreCmpAccessibility", "Default a11y labels"),
+            ("coreCmpContentDescription()", "A11y modifier"),
         ]),
     ]
 
@@ -378,8 +378,8 @@ def build():
             ("Badge dot", "Unread count badge"),
         ]),
         ("B6. Theme & Design (10)", 88, [
-            ("EazyColors injection", "Host brand colors"),
-            ("EazyTypography", "Custom fonts"),
+            ("CoreCmpColors injection", "Host brand colors"),
+            ("CoreCmpTypography", "Custom fonts"),
             ("White-label JSON theme", "Per-client theme"),
             ("High contrast mode", "Accessibility theme"),
             ("Reduce motion", "Disable animations"),
@@ -465,8 +465,8 @@ def build():
             ("JVM storage encrypt", "Desktop encryption"),
         ]),
         ("B13. Analytics (8)", 161, [
-            ("EazyAnalytics interface", "Firebase/Mixpanel"),
-            ("EazyCrash interface", "Sentry/Crashlytics"),
+            ("CoreCmpAnalytics interface", "Firebase/Mixpanel"),
+            ("CoreCmpCrash interface", "Sentry/Crashlytics"),
             ("Screen view tracker", "Auto on navigation"),
             ("Event builder", "track(name, params)"),
             ("User properties", "Attach to all events"),

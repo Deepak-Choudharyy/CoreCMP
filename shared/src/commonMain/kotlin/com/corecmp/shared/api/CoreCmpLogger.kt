@@ -3,7 +3,7 @@ package com.corecmp.shared.api
 import com.corecmp.shared.security.redactPiiFromLog
 
 // API logger for requests, responses, and errors
-object EazyLogger {
+object CoreCmpLogger {
     var isDebugEnabled: Boolean = true
 
     fun d(message: String) {

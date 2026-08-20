@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.corecmp.shared.theme.LocalEazyColors
+import com.corecmp.shared.theme.LocalCoreCmpColors
 import com.corecmp.shared.ui.shimmer
 
 @Composable
@@ -18,7 +18,7 @@ fun SkeletonForm(
     fieldCount: Int = 4,
     modifier: Modifier = Modifier,
 ) {
-    val colors = LocalEazyColors.current
+    val colors = LocalCoreCmpColors.current
     Column(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp),

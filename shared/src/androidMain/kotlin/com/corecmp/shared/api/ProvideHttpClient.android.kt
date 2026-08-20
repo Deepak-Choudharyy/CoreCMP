@@ -40,7 +40,7 @@ actual fun provideHttpClient(): HttpClient {
         }
         install(Logging) {
             logger = Logger.DEFAULT
-            level = if (EazyLogger.isDebugEnabled) LogLevel.INFO else LogLevel.NONE
+            level = if (CoreCmpLogger.isDebugEnabled) LogLevel.INFO else LogLevel.NONE
         }
     }
 }
@@ -54,8 +54,8 @@ fun initCoreCmp(context: Context, name : String) {
 
     try {
         val pref = context.getSharedPreferences(name, Context.MODE_PRIVATE)
-        if (!pref.contains("eazy_cmp_initialized")) {
-            pref.edit().putString("eazy_cmp_initialized", "true").apply()
+        if (!pref.contains("core_cmp_initialized")) {
+            pref.edit().putString("core_cmp_initialized", "true").apply()
         }
     } catch (_: Exception) {}
 }

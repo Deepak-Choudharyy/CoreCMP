@@ -4,7 +4,7 @@ import com.corecmp.shared.api.json
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.encodeToString
 
-private const val DRAFT_PREFIX = "eazy_cmp_draft_"
+private const val DRAFT_PREFIX = "corecmp_cmp_draft_"
 
 class FormDraftManager internal constructor(
     private val storage: SecureStorage = SecureStorage(),

@@ -30,19 +30,19 @@ class PerformanceTrace(private val name: String) {
     }
 }
 
-fun EazyAnalytics.trackScreen(screenName: String) {
+fun CoreCmpAnalytics.trackScreen(screenName: String) {
     logEvent(AnalyticsEvent("screen_view", mapOf("screen" to screenName)))
 }
 
-fun EazyAnalytics.track(name: String, vararg params: Pair<String, String>) {
+fun CoreCmpAnalytics.track(name: String, vararg params: Pair<String, String>) {
     logEvent(AnalyticsEvent(name, params.toMap()))
 }
 
-fun EazyAnalytics.setExperimentVariant(experimentId: String, variant: String) {
+fun CoreCmpAnalytics.setExperimentVariant(experimentId: String, variant: String) {
     setUserProperty("exp_$experimentId", variant)
 }
 
-fun EazyCrash.recordBreadcrumb(message: String) {
+fun CoreCmpCrash.recordBreadcrumb(message: String) {
     AnalyticsBreadcrumbs.add(message)
     log("breadcrumb:$message")
 }

@@ -31,10 +31,10 @@ actual fun provideHttpClient(): HttpClient {
         }
 
         install(Logging) {
-            level = if (EazyLogger.isDebugEnabled) LogLevel.INFO else LogLevel.NONE
+            level = if (CoreCmpLogger.isDebugEnabled) LogLevel.INFO else LogLevel.NONE
             logger = object : Logger {
                 override fun log(message: String) {
-                    EazyLogger.d("KTOR → $message")
+                    CoreCmpLogger.d("KTOR → $message")
                 }
             }
         }

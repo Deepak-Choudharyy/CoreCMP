@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.corecmp.shared.theme.LocalEazyTypography
+import com.corecmp.shared.theme.LocalCoreCmpTypography
 import com.corecmp.shared.ui.CommonButton
 
 @Composable
@@ -21,7 +21,7 @@ fun ErrorRetryView(
     retryLabel: String = "Retry",
     onRetry: () -> Unit,
 ) {
-    val typography = LocalEazyTypography.current
+    val typography = LocalCoreCmpTypography.current
     Column(
         modifier = modifier
             .fillMaxWidth()

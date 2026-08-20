@@ -1,7 +1,7 @@
 package com.corecmp.shared.api
 
 import com.corecmp.shared.CoreCmp
-import com.corecmp.shared.network.EazySocketManager
+import com.corecmp.shared.network.CoreCmpSocketManager
 import com.corecmp.shared.storage.SocketLogStorage
 import kotlinx.serialization.json.Json
 import org.koin.core.module.Module
@@ -20,7 +20,7 @@ val coreModule = module {
 var SETTINGS_NAME = "app_settings"
 
 
-fun eazyModule(): Module = coreModule
+fun coreCmpModule(): Module = coreModule
 
 val json = Json {
     ignoreUnknownKeys = true

@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.corecmp.shared.theme.LocalEazyTypography
+import com.corecmp.shared.theme.LocalCoreCmpTypography
 
 @Composable
 fun KeyValueRow(
@@ -24,7 +24,7 @@ fun KeyValueRow(
     valueColor: Color = MaterialTheme.colorScheme.onSurface,
     verticalAlignment: Alignment.Vertical = Alignment.CenterVertically,
 ) {
-    val typography = LocalEazyTypography.current
+    val typography = LocalCoreCmpTypography.current
     Row(
         modifier = modifier
             .fillMaxWidth()

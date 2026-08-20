@@ -258,7 +258,7 @@ class ApiClient(val client: HttpClient = HttpClientProvider.client) {
                 }
                 capturedReqBody = requestBodyString
 
-                EazyLogger.logApiRequest(
+                CoreCmpLogger.logApiRequest(
                     url = this.url.build().toString(),
                     method = this.method.value,
                     headers = reqHeaders,
@@ -269,7 +269,7 @@ class ApiClient(val client: HttpClient = HttpClientProvider.client) {
             val duration = Clock.System.now() - startTime
             val rawResponse = response.bodyAsText()
             val resHeaders = response.headers.entries().associate { it.key to it.value.joinToString(", ") }
-            EazyLogger.logApiResponse(
+            CoreCmpLogger.logApiResponse(
                 url = url,
                 statusCode = response.status.value,
                 headers = resHeaders,
@@ -294,7 +294,7 @@ class ApiClient(val client: HttpClient = HttpClientProvider.client) {
         } catch (e: Exception) {
             val duration = Clock.System.now() - startTime
 
-            EazyLogger.logApiError(
+            CoreCmpLogger.logApiError(
                 url = url,
                 durationMs = duration.inWholeMilliseconds,
                 error = e.message

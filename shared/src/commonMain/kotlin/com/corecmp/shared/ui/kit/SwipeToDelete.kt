@@ -16,7 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.corecmp.shared.theme.LocalEazyColors
+import com.corecmp.shared.theme.LocalCoreCmpColors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,7 +26,7 @@ fun SwipeToDeleteItem(
     enabled: Boolean = true,
     content: @Composable () -> Unit,
 ) {
-    val colors = LocalEazyColors.current
+    val colors = LocalCoreCmpColors.current
     val state = rememberSwipeToDismissBoxState(
         confirmValueChange = { value ->
             if (value == SwipeToDismissBoxValue.EndToStart) {

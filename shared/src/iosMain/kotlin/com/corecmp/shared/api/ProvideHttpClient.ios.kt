@@ -31,7 +31,7 @@ actual fun provideHttpClient(): HttpClient {
         }
 
         install(Logging) {
-            level = if (EazyLogger.isDebugEnabled) LogLevel.INFO else LogLevel.NONE
+            level = if (CoreCmpLogger.isDebugEnabled) LogLevel.INFO else LogLevel.NONE
         }
 
     }

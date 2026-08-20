@@ -6,7 +6,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-data class EazyTypography(
+data class CoreCmpTypography(
     val chip: TextStyle = TextStyle(
         fontSize = 11.sp,
         fontWeight = FontWeight.Medium,
@@ -41,9 +41,9 @@ data class EazyTypography(
     ),
 )
 
-val LocalEazyTypography = compositionLocalOf { EazyTypography() }
+val LocalCoreCmpTypography = compositionLocalOf { CoreCmpTypography() }
 
-fun EazyTypography.toMaterialTypography(base: Typography = Typography()): Typography = base.copy(
+fun CoreCmpTypography.toMaterialTypography(base: Typography = Typography()): Typography = base.copy(
     bodySmall = base.bodySmall.merge(chip),
     titleMedium = base.titleMedium.merge(emptyTitle),
     bodyMedium = base.bodyMedium.merge(valueText),

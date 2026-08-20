@@ -13,14 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.corecmp.shared.theme.LocalEazyColors
+import com.corecmp.shared.theme.LocalCoreCmpColors
 
 @Composable
 fun BadgeDot(
     count: Int,
     modifier: Modifier = Modifier,
     maxDisplay: Int = 99,
-    backgroundColor: Color = LocalEazyColors.current.error,
+    backgroundColor: Color = LocalCoreCmpColors.current.error,
     contentColor: Color = Color.White,
 ) {
     if (count <= 0) return

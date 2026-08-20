@@ -1,6 +1,6 @@
 package com.corecmp.shared.location
 
-import com.corecmp.shared.api.EazyLogger
+import com.corecmp.shared.api.CoreCmpLogger
 import com.corecmp.shared.api.HttpClientProvider
 import io.ktor.client.request.get
 import io.ktor.client.request.header
@@ -61,7 +61,7 @@ object Geocoder {
             }
             GeocoderResult.Success(results)
         } catch (e: Exception) {
-            EazyLogger.d("Geocoder search failed: ${e.message}")
+            CoreCmpLogger.d("Geocoder search failed: ${e.message}")
             GeocoderResult.Error(e.message ?: "Search failed")
         }
     }
@@ -93,7 +93,7 @@ object Geocoder {
                 )
             )
         } catch (e: Exception) {
-            EazyLogger.d("Geocoder reverse failed: ${e.message}")
+            CoreCmpLogger.d("Geocoder reverse failed: ${e.message}")
             GeocoderResult.Error(e.message ?: "Reverse geocoding failed")
         }
     }

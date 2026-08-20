@@ -17,7 +17,7 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
         CoreCmp.init(context = this)
-        startKoin { modules(eazyModule()) }
+        startKoin { modules(coreCmpModule()) }
     }
 }
 ```

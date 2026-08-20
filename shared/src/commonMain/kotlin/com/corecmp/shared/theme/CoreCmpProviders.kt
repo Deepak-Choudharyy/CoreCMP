@@ -11,15 +11,15 @@ import com.corecmp.shared.display.CoreCmpDisplayHost
 fun CoreCmpProviders(
     themeManager: ThemeManager = CoreCmp.theme,
     displayManager: DisplaySettingsManager = CoreCmp.display,
-    colors: EazyColors = EazyColors(),
-    typography: EazyTypography = EazyTypography(),
+    colors: CoreCmpColors = CoreCmpColors(),
+    typography: CoreCmpTypography = CoreCmpTypography(),
     materialTypography: Typography? = null,
     content: @Composable () -> Unit,
 ) {
     CoreCmpDisplayHost(manager = displayManager) {
         CompositionLocalProvider(
-            LocalEazyColors provides colors,
-            LocalEazyTypography provides typography,
+            LocalCoreCmpColors provides colors,
+            LocalCoreCmpTypography provides typography,
         ) {
             CoreCmpTheme(
                 themeManager = themeManager,

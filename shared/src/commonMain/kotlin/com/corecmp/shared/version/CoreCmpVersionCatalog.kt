@@ -25,7 +25,7 @@ data class CoreCmpVersionManifest(
 
 object CoreCmpVersionCatalog {
     /** Hosted Maven repo (GitHub Pages) — JitPack-style version picker. */
-    const val MAVEN_REPOSITORY_URL = "https://deepakchoudhary.github.io/CoreCMP/"
+    const val MAVEN_REPOSITORY_URL = "https://deepak-choudharyy.github.io/CoreCMP/"
 
     const val GROUP_ID = "com.corecmp"
     const val ARTIFACT_ID = "shared"

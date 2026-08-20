@@ -56,7 +56,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         // Custom CoreCmp Repository
-        maven("https://deepakchoudhary.github.io/CoreCMP/maven-repo/")
+        maven("https://deepak-choudharyy.github.io/CoreCMP/maven-repo/")
     }
 }
 ```
@@ -126,14 +126,14 @@ CoreCmp uses **Koin** internally for Dependency Injection and **Multiplatform Se
 On Android, call `CoreCmp.init()` **before** `startKoin()`:
 ```kotlin
 import com.corecmp.shared.CoreCmp
-import com.corecmp.shared.api.eazyModule
+import com.corecmp.shared.api.coreCmpModule
 import org.koin.core.context.startKoin
 
 class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
         CoreCmp.init(context = this, settingsName = "my_custom_app_pref")
-        startKoin { modules(eazyModule()) }
+        startKoin { modules(coreCmpModule()) }
     }
 }
 ```
@@ -147,14 +147,14 @@ CoreCmp.init(settingsName = "my_custom_app_pref")
 ```
 
 ### Configure Koin
-To register the library's core dependencies, load `eazyModule()` inside your app's dependency injection startup:
+To register the library's core dependencies, load `coreCmpModule()` inside your app's dependency injection startup:
 ```kotlin
-import com.corecmp.shared.api.eazyModule
+import com.corecmp.shared.api.coreCmpModule
 import org.koin.core.context.startKoin
 
 startKoin {
     modules(
-        eazyModule() // Registers ApiClient, SharedViewModel, Settings, etc.
+        coreCmpModule() // Registers ApiClient, SharedViewModel, Settings, etc.
     )
 }
 ```
@@ -598,7 +598,7 @@ import com.corecmp.shared.ui.kit.*
 
 // Theme
 CoreCmpTheme(mode = AppThemeMode.DARK) {
-    CoreCmpProviders(colors = EazyColors(primary = BrandBlue)) {
+    CoreCmpProviders(colors = CoreCmpColors(primary = BrandBlue)) {
         AppContent()
     }
 }
@@ -614,7 +614,7 @@ StatusChip("Approved", StatusChipVariant.SUCCESS)
 Timeline(steps = listOf("KYC", "Payment", "Policy"))
 EmptyStateView(title = "No policies", onAction = { refresh() })
 ErrorRetryView(message = "Failed", onRetry = { retry() })
-EazyPullToRefresh(isRefreshing, onRefresh = { refresh() }) { ListContent() }
+CoreCmpPullToRefresh(isRefreshing, onRefresh = { refresh() }) { ListContent() }
 SwipeToDeleteItem(onDelete = { delete(id) }) { ListRow() }
 SearchBar(query, onQueryChange = { query = it })
 AmountTextField(value, onValueChange = { value = it })

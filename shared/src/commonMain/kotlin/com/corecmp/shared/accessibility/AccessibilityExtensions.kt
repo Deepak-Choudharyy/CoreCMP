@@ -6,7 +6,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 
-object EazyAccessibility {
+object CoreCmpAccessibility {
     const val BACK = "Go back"
     const val CLOSE = "Close"
     const val SUBMIT = "Submit"
@@ -21,7 +21,7 @@ object EazyAccessibility {
     const val DOCUMENT = "Choose document"
 }
 
-fun Modifier.eazyContentDescription(
+fun Modifier.coreCmpContentDescription(
     label: String,
     role: Role? = null,
 ): Modifier = semantics {

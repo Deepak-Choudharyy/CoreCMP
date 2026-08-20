@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.corecmp.shared.theme.LocalEazyTypography
+import com.corecmp.shared.theme.LocalCoreCmpTypography
 import com.corecmp.shared.ui.CommonButton
 
 @Composable
@@ -25,7 +25,7 @@ fun EmptyStateView(
     actionLabel: String? = null,
     onAction: (() -> Unit)? = null,
 ) {
-    val typography = LocalEazyTypography.current
+    val typography = LocalCoreCmpTypography.current
     Column(
         modifier = modifier
             .fillMaxWidth()

@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.corecmp.shared.storage.SecureStorage
 
-private const val KEY_THEME_MODE = "eazy_cmp_theme_mode"
+private const val KEY_THEME_MODE = "corecmp_cmp_theme_mode"
 
 class ThemeManager internal constructor(
     private val storage: SecureStorage = SecureStorage(),
