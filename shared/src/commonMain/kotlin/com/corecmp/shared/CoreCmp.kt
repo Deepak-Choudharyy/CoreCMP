@@ -47,8 +47,10 @@ import com.corecmp.shared.upload.UploadManager
 import com.corecmp.shared.upload.UploadQueueManager
 import org.koin.core.component.inject
 
+import com.corecmp.shared.internal.CoreCmpBuildInfo
+
 object CoreCmp {
-    const val VERSION: String = "1.0.0"
+    val VERSION: String get() = CoreCmpBuildInfo.VERSION
 
     // --- Core platform services ---
     val location: LocationManager by lazy { LocationManager() }

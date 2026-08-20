@@ -511,15 +511,15 @@
             <span class="status-indicator success"></span> LIVE
           </span>
         </div>
-        <div class="card-value" style="font-family: var(--font-mono); font-size: 1.6rem;">1.0.0</div>
-        <div class="card-subtext">Published: 20 Aug 2026, 11:11 UTC</div>
+        <div class="card-value" style="font-family: var(--font-mono); font-size: 1.6rem;">1.0.0.1-rc-002</div>
+        <div class="card-subtext">Published: 20 Aug 2026, 11:21 UTC</div>
       </div>
 
       <!-- Card 2: Release Statistics -->
       <div class="card card-stats">
         <div class="card-label">Update Frequency</div>
-        <div class="card-value">Initial release cycle</div>
-        <div class="card-subtext">Total cataloged releases: 1</div>
+        <div class="card-value">Every 9 mins</div>
+        <div class="card-subtext">Total cataloged releases: 2</div>
       </div>
 
       <!-- Card 3: Setup Coordinates -->
@@ -535,7 +535,7 @@
         </div>
         <div class="metric-item" style="margin-top: 0.25rem;">
           <span class="card-subtext">Total Cataloged:</span>
-          <strong style="color: var(--accent-green)">1</strong>
+          <strong style="color: var(--accent-green)">2</strong>
         </div>
       </div>
     </section>
@@ -555,7 +555,7 @@
           <span class="setup-title">2. Add Dependency (build.gradle.kts)</span>
           <button class="btn-copy" onclick="copyCode('snippet-dep')" data-copy-id="snippet-dep">Copy</button>
         </div>
-        <pre><code id="snippet-dep">implementation(&quot;com.corecmp:shared:1.0.0&quot;)</code></pre>
+        <pre><code id="snippet-dep">implementation(&quot;com.corecmp:shared:1.0.0.1-rc-002&quot;)</code></pre>
       </div>
     </div>
 
@@ -573,7 +573,19 @@
         <tbody>
           
         <tr class="latest-row">
-          <td class="version-cell"><code>1.0.0</code> <span class="badge badge-success">latest</span></td>
+          <td class="version-cell"><code>1.0.0.1-rc-002</code> <span class="badge badge-success">latest</span></td>
+          <td class="message">BottomSheet Optimize</td>
+          <td class="when">20 Aug 2026, 11:21 UTC<br/><span class="muted"><a href="https://github.com/Deepak-Choudharyy/CoreCMP/commit/8bf073848f300fd9581cc642ada472ecc78db801" title="8bf073848f300fd9581cc642ada472ecc78db801" target="_blank" class="commit-link">8bf0738</a></span></td>
+          <td class="code-cell">
+            <div class="code-copy-container">
+              <code class="snippet-code" id="dep-1.0.0.1-rc-002">implementation(&quot;com.corecmp:shared:1.0.0.1-rc-002&quot;)</code>
+              <button class="btn-copy" onclick="copyCode('dep-1.0.0.1-rc-002')" data-copy-id="dep-1.0.0.1-rc-002">Copy</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="version-cell"><code>1.0.0</code></td>
           <td class="message">Initial release with clean setup</td>
           <td class="when">20 Aug 2026, 11:11 UTC<br/><span class="muted"><a href="https://github.com/Deepak-Choudharyy/CoreCMP/commit/af7e08f8cd46ad07b5a9129193cde0cd8cd3ecde" title="af7e08f8cd46ad07b5a9129193cde0cd8cd3ecde" target="_blank" class="commit-link">af7e08f</a></span></td>
           <td class="code-cell">

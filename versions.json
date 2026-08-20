@@ -1,11 +1,18 @@
 {
   "groupId": "com.corecmp",
   "artifactId": "shared",
-  "latest": "1.0.0",
+  "latest": "1.0.0.1-rc-002",
   "versions": [
+    "1.0.0.1-rc-002",
     "1.0.0"
   ],
   "releases": [
+    {
+      "version": "1.0.0.1-rc-002",
+      "message": "BottomSheet Optimize",
+      "publishedAt": "2026-08-20T11:21:05Z",
+      "commit": "8bf073848f300fd9581cc642ada472ecc78db801"
+    },
     {
       "version": "1.0.0",
       "message": "Initial release with clean setup",
@@ -14,6 +21,6 @@
     }
   ],
   "repository": "https://deepak-choudharyy.github.io/CoreCMP/maven-repo/",
-  "updatedAt": "2026-08-20T11:11:09Z",
+  "updatedAt": "2026-08-20T11:21:39Z",
   "failures": []
 }
