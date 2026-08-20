@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Compose-Multiplatform-green" alt="Compose" />
   <img src="https://img.shields.io/badge/Ktor-Client-orange" alt="Ktor" />
   <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License" />
-  <img src="https://img.shields.io/badge/version-1.0.03--alpha--11-purple" alt="Version" />
+  <img src="https://img.shields.io/badge/version-1.0.0.1--rc--001-purple" alt="Version" />
   <img src="https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20Desktop-blue" alt="Platform" />
 </div>
 

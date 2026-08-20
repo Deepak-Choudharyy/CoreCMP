@@ -241,10 +241,10 @@
           "name": "shared-jvm-1.0.0.jar",
           "url": "shared-jvm-1.0.0.jar",
           "size": 1613268,
-          "sha512": "012d944b5bdf017acb2f33b9fff4d51e4feae062d9a2779f0950cc0b1f3b0741c205605fc993864b0637b1fe5f8bacbf87fb514f905fbfb52b4fc24889538d8b",
-          "sha256": "57bb3f74b43994a14a96666886020cbe6907e52bb3859fd6680f6a3244fa839f",
-          "sha1": "ddce29a525a10021de6c0dd5104145ffbd94006c",
-          "md5": "b07c836f0052cb7dda1f9450b22f7fb4"
+          "sha512": "55f8ff667ed42ac282823501c94c12fc1db675c6808cd8364d8882ec3a035dd9f103a8b1b114887f9438534815a8bc3c5e618c3bfae591a534547db1dcf2b488",
+          "sha256": "82da82f72cf068d2e654a0e41b96be3fc478ffa83841125a51acc64a82454f53",
+          "sha1": "802b184af6a6df7a84181e875df13fb72ed1cc35",
+          "md5": "7e7e91d274aa2b3afbbec8c16045fa2d"
         }
       ]
     },
@@ -516,10 +516,10 @@
           "name": "shared-jvm-1.0.0.jar",
           "url": "shared-jvm-1.0.0.jar",
           "size": 1613268,
-          "sha512": "012d944b5bdf017acb2f33b9fff4d51e4feae062d9a2779f0950cc0b1f3b0741c205605fc993864b0637b1fe5f8bacbf87fb514f905fbfb52b4fc24889538d8b",
-          "sha256": "57bb3f74b43994a14a96666886020cbe6907e52bb3859fd6680f6a3244fa839f",
-          "sha1": "ddce29a525a10021de6c0dd5104145ffbd94006c",
-          "md5": "b07c836f0052cb7dda1f9450b22f7fb4"
+          "sha512": "55f8ff667ed42ac282823501c94c12fc1db675c6808cd8364d8882ec3a035dd9f103a8b1b114887f9438534815a8bc3c5e618c3bfae591a534547db1dcf2b488",
+          "sha256": "82da82f72cf068d2e654a0e41b96be3fc478ffa83841125a51acc64a82454f53",
+          "sha1": "802b184af6a6df7a84181e875df13fb72ed1cc35",
+          "md5": "7e7e91d274aa2b3afbbec8c16045fa2d"
         }
       ]
     },
@@ -539,10 +539,10 @@
           "name": "shared-jvm-1.0.0-sources.jar",
           "url": "shared-jvm-1.0.0-sources.jar",
           "size": 188113,
-          "sha512": "fdab84b29d1d4bff0f507bec17849eaafe63d15adc4bd1daea3f71e0fdf58a072e39e347239bf9aa0576067131c07ab0c76d9b496d265727a6ffd2b4fd736a70",
-          "sha256": "b54e8af4e487170d6bcdb329f6af2c020903249b682103dbfe367bdcc76dfac3",
-          "sha1": "0d2b00c796c734fb2b5bdb1144d19276a1653726",
-          "md5": "021ecf70557d1e220d65777d6151f056"
+          "sha512": "82fa976828086c97a4265ac4c27f1e1382bd02092bc531ff2d3df1f9fef6c8079d49aaf005c4a598bf3b0e5f0fa280ddfff61c1ee3e93952896b223dd1efbea8",
+          "sha256": "3f2bfb9596b5b63c654607fc4f5f95f9bc2de399c014a25d47850c99b85e1fc9",
+          "sha1": "1dcb28698a5cd969eb9f9bc3eacd0d8c3805d6c9",
+          "md5": "964f58b78b7fd2da175d6c89f9757b1a"
         }
       ]
     }
