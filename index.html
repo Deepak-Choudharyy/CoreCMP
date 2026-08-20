@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>CoreCmp Maven Repository &amp; Release Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #030712;
+      --bg-secondary: #0b1528;
+      --bg-card: rgba(15, 23, 42, 0.65);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(6, 182, 212, 0.15);
+      --text-primary: #f3f4f6;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-orange: #f97316;
+      --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+    }
+
+    * { box-sizing: border-box; }
+    
+    body {
+      background-color: var(--bg-primary);
+      background-image: 
+      radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.08) 0%, transparent 40%);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    header {
+      background: rgba(3, 7, 18, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-dot {
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--accent-cyan);
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #ffffff, #9ca3af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .github-btn-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .github-btn-link:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 5rem;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-title {
+      font-size: 2.75rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, #ffffff, #a855f7, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      color: var(--text-secondary);
+      font-size: 1.15rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: transparent;
+      transition: background 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-glow);
+      box-shadow: 0 15px 35px -8px rgba(6, 182, 212, 0.15);
+    }
+
+    .card-latest::before { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
+    .card-stats::before { background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan)); }
+    .card-metrics::before { background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); }
+    .card-build::before { background: linear-gradient(90deg, var(--accent-orange), var(--accent-red)); }
+
+    .card-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-family: var(--font-sans);
+    }
+
+    .card-subtext {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .status-badge.loading { background: rgba(255, 255, 255, 0.06); color: var(--text-secondary); }
+    .status-badge.success { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); }
+    .status-badge.failure { background: rgba(239, 68, 68, 0.1); color: var(--accent-red); }
+    .status-badge.warning { background: rgba(249, 115, 22, 0.1); color: var(--accent-orange); }
+
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .status-indicator.success { background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); animation: pulse 2s infinite; }
+    .status-indicator.failure { background: var(--accent-red); box-shadow: 0 0 8px var(--accent-red); }
+    .status-indicator.warning { background: var(--accent-orange); box-shadow: 0 0 8px var(--accent-orange); }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    .metric-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 3rem 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title-icon {
+      width: 8px;
+      height: 18px;
+      background: var(--accent-cyan);
+      border-radius: 4px;
+    }
+
+    .setup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @media(max-width: 768px) {
+      .setup-grid { grid-template-columns: 1fr; }
+    }
+
+    .setup-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+
+    .setup-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .setup-title {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    pre {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 1rem;
+      margin: 0;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+    }
+
+    .code-copy-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      width: 100%;
+    }
+
+    .snippet-code {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      overflow-x: auto;
+      white-space: nowrap;
+      flex-grow: 1;
+    }
+
+    .btn-copy {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-copy:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--card-shadow);
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: middle;
+    }
+
+    th {
+      background: rgba(3, 7, 18, 0.4);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr.latest-row {
+      background: rgba(16, 185, 129, 0.03);
+    }
+
+    tr.latest-row:hover {
+      background: rgba(16, 185, 129, 0.06);
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .version-cell {
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-success {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    td.message {
+      max-width: 380px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      word-break: break-word;
+    }
+
+    td.when {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      min-width: 180px;
+    }
+
+    .muted {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      display: block;
+    }
+
+    .commit-link {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-weight: 500;
+    }
+
+    .commit-link:hover {
+      text-decoration: underline;
+    }
+
+    .code-cell {
+      min-width: 320px;
+    }
+
+    .no-data {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 3rem;
+    }
+
+    footer {
+      margin-top: 5rem;
+      border-top: 1px solid var(--border-color);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    footer a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    function copyCode(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector(`[data-copy-id="${id}"]`);
+        const originalText = btn.innerText;
+        btn.innerText = "Copied!";
+        btn.style.borderColor = "var(--accent-green)";
+        btn.style.color = "var(--accent-green)";
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.borderColor = "var(--border-color)";
+          btn.style.color = "var(--text-primary)";
+        }, 2000);
+      });
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo-container">
+        <span class="logo-dot"></span>
+        <span class="logo-text">CoreCmp</span>
+      </div>
+      <a href="https://github.com/Deepak-Choudharyy/CoreCMP" target="_blank" class="github-btn-link">
+        GitHub Repository &rarr;
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <h1 class="hero-title">Release Dashboard</h1>
+      <p class="hero-desc">Kotlin Multiplatform (KMP) toolkit for Android, iOS &amp; JVM. Hosted live on GitHub Pages.</p>
+    </section>
+
+    <section class="dashboard-grid">
+      <!-- Card 1: Latest Version -->
+      <div class="card card-latest">
+        <div class="card-label">
+          <span>Latest Release</span>
+          <span class="status-badge success" style="padding: 0.1rem 0.5rem; font-size: 0.7rem;">
+            <span class="status-indicator success"></span> LIVE
+          </span>
+        </div>
+        <div class="card-value" style="font-family: var(--font-mono); font-size: 1.6rem;">1.0.0</div>
+        <div class="card-subtext">Published: 20 Aug 2026, 11:11 UTC</div>
+      </div>
+
+      <!-- Card 2: Release Statistics -->
+      <div class="card card-stats">
+        <div class="card-label">Update Frequency</div>
+        <div class="card-value">Initial release cycle</div>
+        <div class="card-subtext">Total cataloged releases: 1</div>
+      </div>
+
+      <!-- Card 3: Setup Coordinates -->
+      <div class="card card-metrics">
+        <div class="card-label">Repository Details</div>
+        <div class="metric-item">
+          <span class="card-subtext">Group ID:</span>
+          <strong style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.85rem;">com.corecmp</strong>
+        </div>
+        <div class="metric-item">
+          <span class="card-subtext">Artifact ID:</span>
+          <strong style="color: var(--accent-purple); font-family: var(--font-mono); font-size: 0.85rem;">shared</strong>
+        </div>
+        <div class="metric-item" style="margin-top: 0.25rem;">
+          <span class="card-subtext">Total Cataloged:</span>
+          <strong style="color: var(--accent-green)">1</strong>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title"><span class="section-title-icon"></span>Gradle Integration</h2>
+    <div class="setup-grid">
+      <div class="setup-box">
+        <div class="setup-box-header">
+          <span class="setup-title">1. Add Maven Repo (settings.gradle.kts)</span>
+          <button class="btn-copy" onclick="copyCode('snippet-repo')" data-copy-id="snippet-repo">Copy</button>
+        </div>
+        <pre><code id="snippet-repo">maven { url = uri(&quot;https://deepak-choudharyy.github.io/CoreCMP/maven-repo/&quot;) }</code></pre>
+      </div>
+
+      <div class="setup-box">
+        <div class="setup-box-header">
+          <span class="setup-title">2. Add Dependency (build.gradle.kts)</span>
+          <button class="btn-copy" onclick="copyCode('snippet-dep')" data-copy-id="snippet-dep">Copy</button>
+        </div>
+        <pre><code id="snippet-dep">implementation(&quot;com.corecmp:shared:1.0.0&quot;)</code></pre>
+      </div>
+    </div>
+
+    <h2 class="section-title"><span class="section-title-icon"></span>Version History</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Version</th>
+            <th>Description / Commit Message</th>
+            <th>Released At</th>
+            <th>Gradle Snippet</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        <tr class="latest-row">
+          <td class="version-cell"><code>1.0.0</code> <span class="badge badge-success">latest</span></td>
+          <td class="message">Initial release with clean setup</td>
+          <td class="when">20 Aug 2026, 11:11 UTC<br/><span class="muted"><a href="https://github.com/Deepak-Choudharyy/CoreCMP/commit/af7e08f8cd46ad07b5a9129193cde0cd8cd3ecde" title="af7e08f8cd46ad07b5a9129193cde0cd8cd3ecde" target="_blank" class="commit-link">af7e08f</a></span></td>
+          <td class="code-cell">
+            <div class="code-copy-container">
+              <code class="snippet-code" id="dep-1.0.0">implementation(&quot;com.corecmp:shared:1.0.0&quot;)</code>
+              <button class="btn-copy" onclick="copyCode('dep-1.0.0')" data-copy-id="dep-1.0.0">Copy</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    <p>Powered by GitHub Pages Maven Repository plugin. Dashboard design by CoreCmp.</p>
+  </footer>
+</body>
+</html>
