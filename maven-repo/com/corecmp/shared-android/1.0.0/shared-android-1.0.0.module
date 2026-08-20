@@ -241,10 +241,10 @@
           "name": "shared.aar",
           "url": "shared-android-1.0.0.aar",
           "size": 1572958,
-          "sha512": "1bedbde44788725ea15641f435c99c3b50aa0ecc1795ee8c62d15e6261da84dc6257f971ee4aa8e2936bbefde7b47e387389464175aae110e383f488a8485fd1",
-          "sha256": "487ed5a0f39043f8d2cc518381961f9161aa4d5091ae494eab99d44da0cd5749",
-          "sha1": "a8813ff55ae026203abea0aca40196f0ee90ff61",
-          "md5": "bf93ce1c7a4fda790097d90f9202e850"
+          "sha512": "363fb224f71c8c8413624ef8be1181da47443c67cdc7c74f0ca3968977337c558a1d12001db53cb9cced55087cea9938653a13d65f50514a7f7af9c6c84ec403",
+          "sha256": "1aef882e191d4c40d6e1238625d97ba8fe3094b3d784a9dcf6e4fd6de2963738",
+          "sha1": "30d9261b3701dd8bfe9827205ce8f116573679bb",
+          "md5": "18683c426ca577cbbe33f4a377f15049"
         }
       ]
     },
@@ -544,10 +544,10 @@
           "name": "shared.aar",
           "url": "shared-android-1.0.0.aar",
           "size": 1572958,
-          "sha512": "1bedbde44788725ea15641f435c99c3b50aa0ecc1795ee8c62d15e6261da84dc6257f971ee4aa8e2936bbefde7b47e387389464175aae110e383f488a8485fd1",
-          "sha256": "487ed5a0f39043f8d2cc518381961f9161aa4d5091ae494eab99d44da0cd5749",
-          "sha1": "a8813ff55ae026203abea0aca40196f0ee90ff61",
-          "md5": "bf93ce1c7a4fda790097d90f9202e850"
+          "sha512": "363fb224f71c8c8413624ef8be1181da47443c67cdc7c74f0ca3968977337c558a1d12001db53cb9cced55087cea9938653a13d65f50514a7f7af9c6c84ec403",
+          "sha256": "1aef882e191d4c40d6e1238625d97ba8fe3094b3d784a9dcf6e4fd6de2963738",
+          "sha1": "30d9261b3701dd8bfe9827205ce8f116573679bb",
+          "md5": "18683c426ca577cbbe33f4a377f15049"
         }
       ]
     },
@@ -567,10 +567,10 @@
           "name": "shared-android-1.0.0-sources.jar",
           "url": "shared-android-1.0.0-sources.jar",
           "size": 197087,
-          "sha512": "a0380544ee7e1ba1119bf6a520b81cf3b987294461e0be0d403b316b487ed338e1352ee42350454f498d508e3de594d22dff2a3bc8f6e965d2686ec3370173f3",
-          "sha256": "6b456b8f7153a86e9f6c1b81a41832a721aa098c7f92bcddeae880425d8e4ed0",
-          "sha1": "6fdf0d11ba6895f7753e6040ad8b9cbe3e4b6e94",
-          "md5": "c38abfccf62d3a18cade3f7b3d57ae71"
+          "sha512": "423677bc0969779be3af6bd8b1d9625706a0ad71250a5eaed8e5ba9b95d778ddc470107acb2048fbbe027ee14dc5e9b854b8911cbc9b3273f9a84a5fa3c0c993",
+          "sha256": "d1404c7fbb5723335d714c66135f8647c9735452f9a642b8cf5c4a25129b7517",
+          "sha1": "5ccf0f7b879a392c1b855648730ed0f1c17f6d16",
+          "md5": "393931120c4cf180d64a455bd3494eaa"
         }
       ]
     }
