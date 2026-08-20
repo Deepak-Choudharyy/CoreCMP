@@ -240,11 +240,11 @@
         {
           "name": "shared.aar",
           "url": "shared-android-1.0.0.aar",
-          "size": 1572957,
-          "sha512": "1c19ef7ae8fd855b771521d2f2d9551cb787103fe28a4d2d81509d91b6b2aad8c7b062b5a7173c3b62491c4f53bea2b58f31b4ca210a4803018fff74a6efbc22",
-          "sha256": "abd206036369baac14a2bda6f346ff1b7dbbf1c33a0afb49ee47dbb468e2b7f5",
-          "sha1": "0bec08fefde61e78d6057ea8f73c1db85b9f7d9d",
-          "md5": "f6c8224c70e0b2b96499dc8b863a9565"
+          "size": 1572958,
+          "sha512": "1bedbde44788725ea15641f435c99c3b50aa0ecc1795ee8c62d15e6261da84dc6257f971ee4aa8e2936bbefde7b47e387389464175aae110e383f488a8485fd1",
+          "sha256": "487ed5a0f39043f8d2cc518381961f9161aa4d5091ae494eab99d44da0cd5749",
+          "sha1": "a8813ff55ae026203abea0aca40196f0ee90ff61",
+          "md5": "bf93ce1c7a4fda790097d90f9202e850"
         }
       ]
     },
@@ -543,11 +543,11 @@
         {
           "name": "shared.aar",
           "url": "shared-android-1.0.0.aar",
-          "size": 1572957,
-          "sha512": "1c19ef7ae8fd855b771521d2f2d9551cb787103fe28a4d2d81509d91b6b2aad8c7b062b5a7173c3b62491c4f53bea2b58f31b4ca210a4803018fff74a6efbc22",
-          "sha256": "abd206036369baac14a2bda6f346ff1b7dbbf1c33a0afb49ee47dbb468e2b7f5",
-          "sha1": "0bec08fefde61e78d6057ea8f73c1db85b9f7d9d",
-          "md5": "f6c8224c70e0b2b96499dc8b863a9565"
+          "size": 1572958,
+          "sha512": "1bedbde44788725ea15641f435c99c3b50aa0ecc1795ee8c62d15e6261da84dc6257f971ee4aa8e2936bbefde7b47e387389464175aae110e383f488a8485fd1",
+          "sha256": "487ed5a0f39043f8d2cc518381961f9161aa4d5091ae494eab99d44da0cd5749",
+          "sha1": "a8813ff55ae026203abea0aca40196f0ee90ff61",
+          "md5": "bf93ce1c7a4fda790097d90f9202e850"
         }
       ]
     },
@@ -567,10 +567,10 @@
           "name": "shared-android-1.0.0-sources.jar",
           "url": "shared-android-1.0.0-sources.jar",
           "size": 197087,
-          "sha512": "000bb093738a51e58b415742e5667798ee596462e796ceb84aa2a7854c740e065735a559df0158428cbdb9a9fa602ea5f7990c594539dc826c8c77cf00248e47",
-          "sha256": "fac0e46a93c993b99e95334e9d373bd7fdce4a35f8352f5d66976c8e9a359b07",
-          "sha1": "85b1421002d5b6957498371a9549dfe45570fb9b",
-          "md5": "d000f71a78cb5d71168d72fc387609bf"
+          "sha512": "a0380544ee7e1ba1119bf6a520b81cf3b987294461e0be0d403b316b487ed338e1352ee42350454f498d508e3de594d22dff2a3bc8f6e965d2686ec3370173f3",
+          "sha256": "6b456b8f7153a86e9f6c1b81a41832a721aa098c7f92bcddeae880425d8e4ed0",
+          "sha1": "6fdf0d11ba6895f7753e6040ad8b9cbe3e4b6e94",
+          "md5": "c38abfccf62d3a18cade3f7b3d57ae71"
         }
       ]
     }

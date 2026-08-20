@@ -378,9 +378,21 @@ def main() -> None:
 
     .dashboard-grid {{
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.5rem;
       margin-bottom: 4.5rem;
+    }}
+
+    @media (min-width: 640px) {{
+      .dashboard-grid {{
+        grid-template-columns: repeat(2, 1fr);
+      }}
+    }}
+
+    @media (min-width: 1024px) {{
+      .dashboard-grid {{
+        grid-template-columns: repeat(4, 1fr);
+      }}
     }}
 
     .card {{
@@ -1308,6 +1320,102 @@ def main() -> None:
         </div>
       </div>
     </section>
+
+    <!-- Platform Compatibility Matrix -->
+    <h2 class="section-title"><span class="section-title-icon"></span>Platform Compatibility Matrix</h2>
+    <div class="table-container" style="margin-bottom: 4rem;">
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Android</th>
+            <th>iOS</th>
+            <th>JVM Desktop</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>API Engine (Ktor wrapper)</strong></td>
+            <td><span class="badge badge-success">Supported</span></td>
+            <td><span class="badge badge-success">Supported</span></td>
+            <td><span class="badge badge-success">Supported</span></td>
+          </tr>
+          <tr>
+            <td><strong>SQL Database (SQLDelight wrapper)</strong></td>
+            <td><span class="badge badge-success">Supported</span></td>
+            <td><span class="badge badge-success">Supported</span></td>
+            <td><span class="badge badge-success">Supported</span></td>
+          </tr>
+          <tr>
+            <td><strong>Secure Vault Storage</strong></td>
+            <td><span class="badge badge-success">Supported</span></td>
+            <td><span class="badge badge-success">Supported</span></td>
+            <td><span class="badge badge-success">Supported</span></td>
+          </tr>
+          <tr>
+            <td><strong>Unified Location Service</strong></td>
+            <td><span class="badge badge-success">Supported</span></td>
+            <td><span class="badge badge-success">Supported</span></td>
+            <td><span class="badge badge-danger" style="background:rgba(239, 68, 68, 0.08); color:#f43f5e; border-color:rgba(239,68,68,0.15)">Not Supported</span></td>
+          </tr>
+          <tr>
+            <td><strong>Common Media Picker</strong></td>
+            <td><span class="badge badge-success">Supported</span></td>
+            <td><span class="badge badge-success">Supported</span></td>
+            <td><span class="badge badge-danger" style="background:rgba(239, 68, 68, 0.08); color:#f43f5e; border-color:rgba(239,68,68,0.15)">Not Supported</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Quick Start Usage Cheatsheet -->
+    <h2 class="section-title"><span class="section-title-icon"></span>Usage Playground</h2>
+    <div class="tab-panel-container" style="margin-bottom: 4.5rem;">
+      <div class="tab-header">
+        <div class="tab-title-group">
+          <span class="tab-title">Quick Code Samples</span>
+        </div>
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab-group="qs" onclick="switchTab('qs', 'qs-api')">API Client</button>
+          <button class="tab-btn" data-tab-group="qs" onclick="switchTab('qs', 'qs-db')">Database</button>
+          <button class="tab-btn" data-tab-group="qs" onclick="switchTab('qs', 'qs-storage')">Secure Storage</button>
+        </div>
+      </div>
+
+      <div id="qs-api" class="tab-content active" data-tab-content-group="qs">
+        <button class="btn-copy-float" onclick="copyCode('snippet-qs-api')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+          Copy
+        </button>
+        <pre><code id="snippet-qs-api">// Call REST API with automated parameter/header injection
+val client = CoreCmp.api.createClient("https://api.example.com")
+val response = client.get("/v1/profile") {{
+    parameter("userId", "12345")
+}}</code></pre>
+      </div>
+
+      <div id="qs-db" class="tab-content" data-tab-content-group="qs">
+        <button class="btn-copy-float" onclick="copyCode('snippet-qs-db')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+          Copy
+        </button>
+        <pre><code id="snippet-qs-db">// Read and write objects into local SQL DB
+val db = CoreCmp.database.getDatabase()
+db.userQueries.insertUser(id = 12, name = "Deepak")
+val user = db.userQueries.selectUser(12).executeAsOne()</code></pre>
+      </div>
+
+      <div id="qs-storage" class="tab-content" data-tab-content-group="qs">
+        <button class="btn-copy-float" onclick="copyCode('snippet-qs-storage')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+          Copy
+        </button>
+        <pre><code id="snippet-qs-storage">// Store credentials inside hardware platform security enclave
+val secureStorage = CoreCmp.storage.getSecureStorage()
+secureStorage.putString("access_token", "sample_secret_key_999")
+val token = secureStorage.getString("access_token")</code></pre>
+      </div>
+    </div>
 
     <!-- Version Registry Header & Actions -->
     <h2 class="section-title"><span class="section-title-icon"></span>Version Registry</h2>
