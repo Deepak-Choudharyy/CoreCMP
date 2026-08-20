@@ -56,8 +56,8 @@
     }
   ],
   "repository": "https://deepak-choudharyy.github.io/CoreCMP/maven-repo/",
-  "updatedAt": "2026-08-20T12:00:46Z",
+  "updatedAt": "2026-08-20T12:20:07Z",
   "failures": [],
-  "inProgress": "",
-  "status": "passing"
+  "inProgress": "1.0.0.1-rc-008",
+  "status": "in-progress"
 }
