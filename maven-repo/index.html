@@ -3,28 +3,31 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>CoreCmp Maven Repository &amp; Release Dashboard</title>
+  <title>CoreCmp | Kotlin Multiplatform Toolset Maven Repository</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-primary: #030712;
-      --bg-secondary: #0b1528;
-      --bg-card: rgba(15, 23, 42, 0.65);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --border-glow: rgba(6, 182, 212, 0.15);
+      --bg-secondary: #080f1e;
+      --bg-glass: rgba(13, 20, 38, 0.45);
+      --bg-glass-hover: rgba(17, 27, 54, 0.65);
+      --border-color: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(99, 102, 241, 0.25);
       --text-primary: #f3f4f6;
       --text-secondary: #9ca3af;
       --text-muted: #6b7280;
+      --accent-indigo: #6366f1;
       --accent-cyan: #06b6d4;
-      --accent-purple: #8b5cf6;
+      --accent-purple: #a855f7;
       --accent-green: #10b981;
-      --accent-red: #ef4444;
+      --accent-red: #f43f5e;
       --accent-orange: #f97316;
-      --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-sans: 'Plus Jakarta Sans', 'Inter', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+      --card-shadow: 0 10px 40px -15px rgba(0, 0, 0, 0.8);
+      --glow-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.12);
     }
 
     * { box-sizing: border-box; }
@@ -32,20 +35,23 @@
     body {
       background-color: var(--bg-primary);
       background-image: 
-      radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.08) 0%, transparent 40%);
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.04) 0%, transparent 60%);
+      background-attachment: fixed;
       color: var(--text-primary);
       font-family: var(--font-sans);
       margin: 0;
       padding: 0;
       min-height: 100vh;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     header {
-      background: rgba(3, 7, 18, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(3, 7, 18, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-color);
       position: sticky;
       top: 0;
@@ -55,7 +61,7 @@
     .header-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 1.25rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -64,155 +70,173 @@
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
+      text-decoration: none;
     }
 
     .logo-dot {
-      width: 12px;
-      height: 12px;
-      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-      border-radius: 50%;
-      box-shadow: 0 0 12px var(--accent-cyan);
+      width: 14px;
+      height: 14px;
+      background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));
+      border-radius: 4px;
+      box-shadow: 0 0 15px var(--accent-indigo);
+      transform: rotate(45deg);
     }
 
     .logo-text {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(to right, #ffffff, #9ca3af);
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, #ffffff 30%, #cbd5e1);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .logo-tag {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      color: #a5b4fc;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .github-btn-link {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(255, 255, 255, 0.06);
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
       border: 1px solid var(--border-color);
       color: var(--text-primary);
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.9rem;
-      transition: all 0.3s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
 
     .github-btn-link:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-1px);
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.15);
     }
 
     main {
       max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1.5rem 5rem;
+      margin: 3.5rem auto;
+      padding: 0 1.5rem 6rem;
     }
 
     .hero-section {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
     }
 
     .hero-title {
-      font-size: 2.75rem;
+      font-size: 3.5rem;
       font-weight: 800;
-      margin: 0 0 0.5rem;
-      letter-spacing: -0.03em;
-      background: linear-gradient(to right, #ffffff, #a855f7, #06b6d4);
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #ffffff 20%, #a5b4fc 60%, #06b6d4 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-desc {
       color: var(--text-secondary);
-      font-size: 1.15rem;
-      max-width: 650px;
+      font-size: 1.25rem;
+      max-width: 700px;
       margin: 0 auto;
+      font-weight: 500;
     }
 
     .dashboard-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      margin-bottom: 3rem;
+      margin-bottom: 4.5rem;
     }
 
     .card {
-      background: var(--bg-card);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: var(--card-shadow);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: var(--card-shadow), var(--glow-shadow);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
     }
 
-    .card::before {
+    .card::after {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
+      height: 4px;
       background: transparent;
       transition: background 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-glow);
-      box-shadow: 0 15px 35px -8px rgba(6, 182, 212, 0.15);
+      transform: translateY(-5px);
+      border-color: rgba(99, 102, 241, 0.35);
+      background: var(--bg-glass-hover);
+      box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.2), var(--glow-shadow);
     }
 
-    .card-latest::before { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
-    .card-stats::before { background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan)); }
-    .card-metrics::before { background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); }
-    .card-build::before { background: linear-gradient(90deg, var(--accent-orange), var(--accent-red)); }
+    .card-latest::after { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
+    .card-stats::after { background: linear-gradient(90deg, var(--accent-indigo), var(--accent-purple)); }
+    .card-metrics::after { background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo)); }
 
     .card-label {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: var(--text-secondary);
-      font-weight: 600;
-      margin-bottom: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .card-value {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      font-family: var(--font-sans);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.02em;
     }
 
     .card-subtext {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
     }
 
     .status-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.25rem 0.75rem;
+      padding: 0.25rem 0.85rem;
       border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.85rem;
+      font-weight: 700;
+      font-size: 0.8rem;
+      border: 1px solid transparent;
     }
 
-    .status-badge.loading { background: rgba(255, 255, 255, 0.06); color: var(--text-secondary); }
-    .status-badge.success { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); }
-    .status-badge.failure { background: rgba(239, 68, 68, 0.1); color: var(--accent-red); }
-    .status-badge.warning { background: rgba(249, 115, 22, 0.1); color: var(--accent-orange); }
+    .status-badge.success { 
+      background: rgba(16, 185, 129, 0.08); 
+      color: #34d399; 
+      border-color: rgba(16, 185, 129, 0.15); 
+    }
 
     .status-indicator {
       width: 8px;
@@ -220,133 +244,300 @@
       border-radius: 50%;
       display: inline-block;
     }
-    .status-indicator.success { background: var(--accent-green); box-shadow: 0 0 8px var(--accent-green); animation: pulse 2s infinite; }
-    .status-indicator.failure { background: var(--accent-red); box-shadow: 0 0 8px var(--accent-red); }
-    .status-indicator.warning { background: var(--accent-orange); box-shadow: 0 0 8px var(--accent-orange); }
-
-    @keyframes pulse {
-      0% { transform: scale(0.95); opacity: 0.8; }
-      50% { transform: scale(1.1); opacity: 1; }
-      100% { transform: scale(0.95); opacity: 0.8; }
+    .status-indicator.success { 
+      background: var(--accent-green); 
+      box-shadow: 0 0 10px var(--accent-green); 
+      animation: pulse 2s infinite; 
     }
 
-    .metric-item {
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.6; }
+    }
+
+    .metric-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      padding-bottom: 0.65rem;
+    }
+
+    .metric-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 500;
     }
 
     .section-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin: 3rem 0 1.5rem;
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 4.5rem 0 1.75rem;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      letter-spacing: -0.02em;
+      gap: 0.85rem;
+      letter-spacing: -0.03em;
     }
 
     .section-title-icon {
-      width: 8px;
-      height: 18px;
-      background: var(--accent-cyan);
-      border-radius: 4px;
+      width: 6px;
+      height: 24px;
+      background: linear-gradient(to bottom, var(--accent-indigo), var(--accent-cyan));
+      border-radius: 99px;
     }
 
+    /* Integration Section Tabs Styling */
     .setup-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.5rem;
-      margin-bottom: 3.5rem;
+      margin-bottom: 4rem;
     }
 
-    @media(max-width: 768px) {
-      .setup-grid { grid-template-columns: 1fr; }
-    }
-
-    .setup-box {
-      background: var(--bg-card);
+    .tab-panel-container {
+      background: var(--bg-glass);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 1.5rem;
+      border-radius: 20px;
+      padding: 2rem;
       box-shadow: var(--card-shadow);
-      position: relative;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
 
-    .setup-box-header {
+    .tab-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    .setup-title {
-      font-weight: 600;
+    .tab-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tab-title {
+      font-weight: 700;
+      font-size: 1.15rem;
       color: var(--text-primary);
     }
 
-    pre {
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+    .tab-buttons {
+      display: flex;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 0.45rem 1rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
       border-radius: 8px;
-      padding: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: rgba(99, 102, 241, 0.15);
+      color: #a5b4fc;
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.05);
+    }
+
+    pre {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 1.25rem;
       margin: 0;
       overflow-x: auto;
+      position: relative;
     }
 
     code {
       font-family: var(--font-mono);
-      font-size: 0.88rem;
+      font-size: 0.9rem;
+      color: #e2e8f0;
     }
 
-    .code-copy-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      padding: 0.5rem 0.75rem;
-      width: 100%;
+    .tab-content {
+      display: none;
     }
 
-    .snippet-code {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      overflow-x: auto;
-      white-space: nowrap;
-      flex-grow: 1;
+    .tab-content.active {
+      display: block;
     }
 
-    .btn-copy {
-      background: rgba(255, 255, 255, 0.06);
+    .btn-copy-float {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border-color);
       color: var(--text-primary);
-      padding: 0.25rem 0.75rem;
-      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-copy-float:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    /* Component Specs / Features overview */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 4rem;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(99, 102, 241, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon-wrapper {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.85rem;
+      background: rgba(99, 102, 241, 0.1);
+      color: #a5b4fc;
+    }
+
+    .feature-card:nth-child(even) .feature-icon-wrapper {
+      background: rgba(6, 182, 212, 0.1);
+      color: #22d3ee;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin: 0 0 0.35rem 0;
+    }
+
+    .feature-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    /* History table actions & Search */
+    .table-actions-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .search-input-wrapper {
+      position: relative;
+      width: 320px;
+      max-width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      padding: 0.65rem 1rem 0.65rem 2.5rem;
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
       font-weight: 500;
       transition: all 0.2s ease;
-      white-space: nowrap;
     }
 
-    .btn-copy:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.2);
+    .search-input:focus {
+      outline: none;
+      border-color: rgba(99, 102, 241, 0.5);
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.1);
     }
 
+    .search-icon-svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .filter-options {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      padding: 0.35rem 0.85rem;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn.active {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+    }
+
+    /* Table Styling */
     .table-container {
       width: 100%;
       overflow-x: auto;
-      border-radius: 16px;
+      border-radius: 20px;
       border: 1px solid var(--border-color);
       box-shadow: var(--card-shadow);
-      background: var(--bg-card);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
 
     table {
@@ -356,18 +547,18 @@
     }
 
     th, td {
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--border-color);
+      padding: 1.15rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       vertical-align: middle;
     }
 
     th {
-      background: rgba(3, 7, 18, 0.4);
-      font-weight: 600;
-      font-size: 0.9rem;
+      background: rgba(3, 7, 18, 0.5);
+      font-weight: 700;
+      font-size: 0.85rem;
       color: var(--text-secondary);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
     }
 
     tr:last-child td {
@@ -375,65 +566,89 @@
     }
 
     tr.latest-row {
-      background: rgba(16, 185, 129, 0.03);
+      background: rgba(16, 185, 129, 0.015);
     }
 
     tr.latest-row:hover {
-      background: rgba(16, 185, 129, 0.06);
+      background: rgba(16, 185, 129, 0.035);
     }
 
     tr:hover {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .version-pill {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      padding: 0.2rem 0.65rem;
+      border-radius: 8px;
+    }
+
+    .latest-row .version-pill {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.2);
     }
 
     .version-cell {
       font-weight: 700;
+      min-width: 160px;
     }
 
     .badge {
       display: inline-block;
-      padding: 0.15rem 0.5rem;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
+      margin-left: 0.45rem;
     }
 
     .badge-success {
-      background: rgba(16, 185, 129, 0.15);
+      background: rgba(16, 185, 129, 0.12);
       color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.15);
     }
 
     td.message {
       max-width: 380px;
-      font-size: 0.92rem;
-      color: var(--text-secondary);
+      font-size: 0.9rem;
+      color: #d1d5db;
       word-break: break-word;
     }
 
     td.when {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
       min-width: 180px;
     }
 
-    .muted {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
+    .date-text {
       display: block;
-    }
-
-    .commit-link {
-      color: var(--accent-cyan);
-      text-decoration: none;
-      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
       font-weight: 500;
     }
 
+    .commit-sha {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .commit-link {
+      color: var(--accent-indigo);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      transition: color 0.15s ease;
+    }
+
     .commit-link:hover {
+      color: #a5b4fc;
       text-decoration: underline;
     }
 
@@ -441,27 +656,155 @@
       min-width: 320px;
     }
 
+    .inline-code-box {
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+    }
+
+    .inline-code-text {
+      font-size: 0.82rem;
+      color: #94a3b8;
+    }
+
+    .btn-copy-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+    }
+
+    .btn-copy-circle:hover {
+      background: rgba(99, 102, 241, 0.15);
+      color: #a5b4fc;
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
     .no-data {
       text-align: center;
       color: var(--text-muted);
-      padding: 3rem;
+      padding: 4rem;
+      font-weight: 500;
+    }
+
+    /* Build Failures Log Area */
+    .failures-log-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .failed-run-card {
+      background: rgba(244, 63, 94, 0.015);
+      border: 1px solid rgba(244, 63, 94, 0.08);
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .failed-run-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .failed-version {
+      color: var(--accent-red);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .failed-time {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .failed-commit {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .failed-commit code {
+      font-size: 0.78rem;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+    }
+
+    .btn-error-logs {
+      color: var(--accent-red);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 0.25rem;
+      align-self: flex-start;
+      transition: opacity 0.15s ease;
+    }
+
+    .btn-error-logs:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    /* Toast notification */
+    .toast-container {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .toast-alert {
+      background: rgba(8, 15, 30, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--accent-indigo);
+      border-left: 4px solid var(--accent-indigo);
+      color: var(--text-primary);
+      padding: 0.85rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     footer {
-      margin-top: 5rem;
+      margin-top: 6rem;
       border-top: 1px solid var(--border-color);
-      padding: 2rem 0;
+      padding: 2.5rem 0;
       text-align: center;
       color: var(--text-muted);
       font-size: 0.88rem;
+      font-weight: 500;
     }
 
     footer a {
       color: var(--accent-cyan);
       text-decoration: none;
+      transition: color 0.15s ease;
     }
 
     footer a:hover {
+      color: var(--accent-indigo);
       text-decoration: underline;
     }
   </style>
@@ -469,129 +812,362 @@
     function copyCode(id) {
       const text = document.getElementById(id).innerText;
       navigator.clipboard.writeText(text).then(() => {
-        const btn = document.querySelector(`[data-copy-id="${id}"]`);
-        const originalText = btn.innerText;
-        btn.innerText = "Copied!";
-        btn.style.borderColor = "var(--accent-green)";
-        btn.style.color = "var(--accent-green)";
-        setTimeout(() => {
-          btn.innerText = originalText;
-          btn.style.borderColor = "var(--border-color)";
-          btn.style.color = "var(--text-primary)";
-        }, 2000);
+        showToast("Dependency snippet copied!");
       });
+    }
+
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'toast-alert';
+      toast.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="3" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"></polyline></svg> ${message}`;
+      container.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.style.animation = 'slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) reverse forwards';
+        setTimeout(() => toast.remove(), 300);
+      }, 2500);
+    }
+
+    function switchTab(groupName, tabId) {
+      // Update Tab Buttons
+      const buttons = document.querySelectorAll(`[data-tab-group="${groupName}"]`);
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Update Tab Content
+      const contents = document.querySelectorAll(`[data-tab-content-group="${groupName}"]`);
+      contents.forEach(content => content.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function searchVersions() {
+      const query = document.getElementById('search-box').value.toLowerCase().trim();
+      const rows = document.querySelectorAll('tbody tr');
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        if (row.classList.contains('no-data-row')) return;
+        const version = row.querySelector('.version-cell').innerText.toLowerCase();
+        const msg = row.querySelector('.message').innerText.toLowerCase();
+        
+        const matchesQuery = version.includes(query) || msg.includes(query);
+        const matchesFilter = matchesActiveFilter(row);
+
+        if (matchesQuery && matchesFilter) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      toggleNoDataRow(visibleCount === 0);
+    }
+
+    function filterCategory(category) {
+      // Update active filter button
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('filter-select').dataset.activeFilter = category;
+
+      searchVersions(); // re-eval with query
+    }
+
+    function matchesActiveFilter(row) {
+      const filter = document.getElementById('filter-select').dataset.activeFilter || 'all';
+      if (filter === 'all') return true;
+      
+      const rowCategory = row.dataset.category;
+      if (filter === 'stable') return rowCategory === 'stable' || rowCategory === 'latest';
+      if (filter === 'prerelease') return rowCategory === 'pre-release';
+      return true;
+    }
+
+    function toggleNoDataRow(show) {
+      const noDataRow = document.getElementById('js-no-data-row');
+      if (show) {
+        if (!noDataRow) {
+          const tbody = document.querySelector('tbody');
+          const tr = document.createElement('tr');
+          tr.id = 'js-no-data-row';
+          tr.className = 'no-data-row';
+          tr.innerHTML = '<td colspan="4" class="no-data">No matching versions found.</td>';
+          tbody.appendChild(tr);
+        }
+      } else {
+        if (noDataRow) noDataRow.remove();
+      }
     }
   </script>
 </head>
 <body>
   <header>
     <div class="header-container">
-      <div class="logo-container">
+      <a href="#" class="logo-container">
         <span class="logo-dot"></span>
         <span class="logo-text">CoreCmp</span>
-      </div>
+        <span class="logo-tag">MMP Toolkit</span>
+      </a>
       <a href="https://github.com/Deepak-Choudharyy/CoreCMP" target="_blank" class="github-btn-link">
-        GitHub Repository &rarr;
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:0.25rem"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        GitHub Code &rarr;
       </a>
     </div>
   </header>
 
   <main>
     <section class="hero-section">
-      <h1 class="hero-title">Release Dashboard</h1>
-      <p class="hero-desc">Kotlin Multiplatform (KMP) toolkit for Android, iOS &amp; JVM. Hosted live on GitHub Pages.</p>
+      <h1 class="hero-title">Release Registry</h1>
+      <p class="hero-desc">Kotlin Multiplatform (KMP) compiled Maven toolkit repository and deployment log panel.</p>
     </section>
 
+    <!-- Metrics Cards Grid -->
     <section class="dashboard-grid">
       <!-- Card 1: Latest Version -->
       <div class="card card-latest">
         <div class="card-label">
-          <span>Latest Release</span>
-          <span class="status-badge success" style="padding: 0.1rem 0.5rem; font-size: 0.7rem;">
+          <span>Active Release</span>
+          <span class="status-badge success">
             <span class="status-indicator success"></span> LIVE
           </span>
         </div>
-        <div class="card-value" style="font-family: var(--font-mono); font-size: 1.6rem;">1.0.0.1-rc-002</div>
-        <div class="card-subtext">Published: 20 Aug 2026, 11:21 UTC</div>
+        <div class="card-value" style="font-family: var(--font-mono); color: #34d399; font-size: 1.8rem;">
+          1.0.0.1-rc-003
+        </div>
+        <div class="card-subtext">Synchronized: <span style="color: var(--text-primary)">20 Aug 2026, 11:29 UTC</span></div>
       </div>
 
-      <!-- Card 2: Release Statistics -->
+      <!-- Card 2: Release Interval -->
       <div class="card card-stats">
-        <div class="card-label">Update Frequency</div>
-        <div class="card-value">Every 9 mins</div>
-        <div class="card-subtext">Total cataloged releases: 2</div>
+        <div class="card-label">Deploy Frequency</div>
+        <div class="card-value" style="color: #a5b4fc;">Every 8 mins</div>
+        <div class="card-subtext">Total cataloged releases: <span style="color: var(--text-primary)">3</span></div>
       </div>
 
-      <!-- Card 3: Setup Coordinates -->
+      <!-- Card 3: Library Details -->
       <div class="card card-metrics">
-        <div class="card-label">Repository Details</div>
-        <div class="metric-item">
-          <span class="card-subtext">Group ID:</span>
-          <strong style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.85rem;">com.corecmp</strong>
+        <div class="card-label">Coordinates Specs</div>
+        <div class="metric-row">
+          <span class="card-subtext">Group:</span>
+          <span class="metric-value" style="color: var(--accent-cyan);">com.corecmp</span>
         </div>
-        <div class="metric-item">
-          <span class="card-subtext">Artifact ID:</span>
-          <strong style="color: var(--accent-purple); font-family: var(--font-mono); font-size: 0.85rem;">shared</strong>
-        </div>
-        <div class="metric-item" style="margin-top: 0.25rem;">
-          <span class="card-subtext">Total Cataloged:</span>
-          <strong style="color: var(--accent-green)">2</strong>
+        <div class="metric-row">
+          <span class="card-subtext">Artifact:</span>
+          <span class="metric-value" style="color: var(--accent-purple);">shared</span>
         </div>
       </div>
     </section>
 
-    <h2 class="section-title"><span class="section-title-icon"></span>Gradle Integration</h2>
-    <div class="setup-grid">
-      <div class="setup-box">
-        <div class="setup-box-header">
-          <span class="setup-title">1. Add Maven Repo (settings.gradle.kts)</span>
-          <button class="btn-copy" onclick="copyCode('snippet-repo')" data-copy-id="snippet-repo">Copy</button>
+    <!-- Core Features Preview -->
+    <h2 class="section-title"><span class="section-title-icon"></span>Library Components</h2>
+    <section class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
         </div>
-        <pre><code id="snippet-repo">maven { url = uri(&quot;https://deepak-choudharyy.github.io/CoreCMP/maven-repo/&quot;) }</code></pre>
+        <h3 class="feature-title">API Engine</h3>
+        <p class="feature-desc">Ktor unified client with parameter merging, priority queues, and token refreshing.</p>
       </div>
 
-      <div class="setup-box">
-        <div class="setup-box-header">
-          <span class="setup-title">2. Add Dependency (build.gradle.kts)</span>
-          <button class="btn-copy" onclick="copyCode('snippet-dep')" data-copy-id="snippet-dep">Copy</button>
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
         </div>
-        <pre><code id="snippet-dep">implementation(&quot;com.corecmp:shared:1.0.0.1-rc-002&quot;)</code></pre>
+        <h3 class="feature-title">Local DB</h3>
+        <p class="feature-desc">Platform-specific drivers auto-mapping SQLDelight logic locally on Android &amp; iOS.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-10 10c0 5.25 10 12 10 12s10-6.75 10-12a10 10 0 0 0-10-10z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <h3 class="feature-title">Location Service</h3>
+        <p class="feature-desc">Unified GPS, geofencing, and background monitoring wrapper.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon-wrapper">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <h3 class="feature-title">Secure Vault</h3>
+        <p class="feature-desc">Keychain / Keystore secure string storage and biometric authentication.</p>
+      </div>
+    </section>
+
+    <!-- Failed Runs Panel (only if there are failures) -->
+    
+
+    <!-- Gradle Integration Tabs -->
+    <h2 class="section-title"><span class="section-title-icon"></span>Gradle &amp; Maven Setup</h2>
+    <section class="setup-grid">
+      <!-- Repo Configuration Card -->
+      <div class="tab-panel-container">
+        <div class="tab-header">
+          <div class="tab-title-group">
+            <span class="tab-title">1. Repository Setup Snippet</span>
+          </div>
+          <div class="tab-buttons">
+            <button class="tab-btn active" data-tab-group="repo" onclick="switchTab('repo', 'repo-kotlin')">Kotlin DSL</button>
+            <button class="tab-btn" data-tab-group="repo" onclick="switchTab('repo', 'repo-groovy')">Groovy</button>
+            <button class="tab-btn" data-tab-group="repo" onclick="switchTab('repo', 'repo-maven')">Maven</button>
+          </div>
+        </div>
+
+        <div id="repo-kotlin" class="tab-content active" data-tab-content-group="repo">
+          <button class="btn-copy-float" onclick="copyCode('snippet-repo-kotlin')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+            Copy
+          </button>
+          <pre><code id="snippet-repo-kotlin">maven { url = uri(&quot;https://deepak-choudharyy.github.io/CoreCMP/maven-repo/&quot;) }</code></pre>
+        </div>
+
+        <div id="repo-groovy" class="tab-content" data-tab-content-group="repo">
+          <button class="btn-copy-float" onclick="copyCode('snippet-repo-groovy')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+            Copy
+          </button>
+          <pre><code id="snippet-repo-groovy">maven { url &quot;https://deepak-choudharyy.github.io/CoreCMP/maven-repo/&quot; }</code></pre>
+        </div>
+
+        <div id="repo-maven" class="tab-content" data-tab-content-group="repo">
+          <button class="btn-copy-float" onclick="copyCode('snippet-repo-maven')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+            Copy
+          </button>
+          <pre><code id="snippet-repo-maven">&lt;repository&gt;
+  &lt;id&gt;corecmp-maven-repo&lt;/id&gt;
+  &lt;url&gt;https://deepak-choudharyy.github.io/CoreCMP/maven-repo/&lt;/url&gt;
+&lt;/repository&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Dependency Configuration Card -->
+      <div class="tab-panel-container" style="margin-top: 1.5rem;">
+        <div class="tab-header">
+          <div class="tab-title-group">
+            <span class="tab-title">2. Add Dependency Snippet</span>
+          </div>
+          <div class="tab-buttons">
+            <button class="tab-btn active" data-tab-group="dep" onclick="switchTab('dep', 'dep-kotlin')">Kotlin DSL</button>
+            <button class="tab-btn" data-tab-group="dep" onclick="switchTab('dep', 'dep-groovy')">Groovy</button>
+            <button class="tab-btn" data-tab-group="dep" onclick="switchTab('dep', 'dep-maven')">Maven</button>
+          </div>
+        </div>
+
+        <div id="dep-kotlin" class="tab-content active" data-tab-content-group="dep">
+          <button class="btn-copy-float" onclick="copyCode('snippet-dep-kotlin')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+            Copy
+          </button>
+          <pre><code id="snippet-dep-kotlin">implementation(&quot;com.corecmp:shared:1.0.0.1-rc-003&quot;)</code></pre>
+        </div>
+
+        <div id="dep-groovy" class="tab-content" data-tab-content-group="dep">
+          <button class="btn-copy-float" onclick="copyCode('snippet-dep-groovy')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+            Copy
+          </button>
+          <pre><code id="snippet-dep-groovy">implementation &#x27;com.corecmp:shared:1.0.0.1-rc-003&#x27;</code></pre>
+        </div>
+
+        <div id="dep-maven" class="tab-content" data-tab-content-group="dep">
+          <button class="btn-copy-float" onclick="copyCode('snippet-dep-maven')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+            Copy
+          </button>
+          <pre><code id="snippet-dep-maven">&lt;dependency&gt;
+  &lt;groupId&gt;com.corecmp&lt;/groupId&gt;
+  &lt;artifactId&gt;shared&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0.1-rc-003&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Version Registry Header & Actions -->
+    <h2 class="section-title"><span class="section-title-icon"></span>Version Registry</h2>
+    
+    <div class="table-actions-header">
+      <div class="search-input-wrapper">
+        <svg class="search-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="search-box" class="search-input" onkeyup="searchVersions()" placeholder="Search versions or commit logs..."/>
+      </div>
+
+      <div class="filter-options" id="filter-select" data-active-filter="all">
+        <button class="filter-btn active" onclick="filterCategory('all')">All</button>
+        <button class="filter-btn" onclick="filterCategory('stable')">Stable</button>
+        <button class="filter-btn" onclick="filterCategory('prerelease')">Pre-releases</button>
       </div>
     </div>
 
-    <h2 class="section-title"><span class="section-title-icon"></span>Version History</h2>
+    <!-- Version Table -->
     <div class="table-container">
       <table>
         <thead>
           <tr>
             <th>Version</th>
-            <th>Description / Commit Message</th>
+            <th>Description &amp; Log</th>
             <th>Released At</th>
-            <th>Gradle Snippet</th>
+            <th>Snippet</th>
           </tr>
         </thead>
         <tbody>
           
-        <tr class="latest-row">
-          <td class="version-cell"><code>1.0.0.1-rc-002</code> <span class="badge badge-success">latest</span></td>
-          <td class="message">BottomSheet Optimize</td>
-          <td class="when">20 Aug 2026, 11:21 UTC<br/><span class="muted"><a href="https://github.com/Deepak-Choudharyy/CoreCMP/commit/8bf073848f300fd9581cc642ada472ecc78db801" title="8bf073848f300fd9581cc642ada472ecc78db801" target="_blank" class="commit-link">8bf0738</a></span></td>
+        <tr class="latest-row" data-category="latest">
+          <td class="version-cell">
+            <span class="version-pill"><code>1.0.0.1-rc-003</code></span> <span class="badge badge-success">latest</span>
+          </td>
+          <td class="message">Upgrade dashboard UI to premium theme</td>
+          <td class="when">
+            <span class="date-text">20 Aug 2026, 11:28 UTC</span>
+            <span class="commit-sha"><a href="https://github.com/Deepak-Choudharyy/CoreCMP/commit/d6b1d3209d49041e3f27434eab5a79a43ee72a3c" title="d6b1d3209d49041e3f27434eab5a79a43ee72a3c" target="_blank" class="commit-link">d6b1d32</a></span>
+          </td>
           <td class="code-cell">
-            <div class="code-copy-container">
-              <code class="snippet-code" id="dep-1.0.0.1-rc-002">implementation(&quot;com.corecmp:shared:1.0.0.1-rc-002&quot;)</code>
-              <button class="btn-copy" onclick="copyCode('dep-1.0.0.1-rc-002')" data-copy-id="dep-1.0.0.1-rc-002">Copy</button>
+            <div class="code-copy-container inline-code-box">
+              <code class="snippet-code inline-code-text" id="dep-1.0.0.1-rc-003">implementation("com.corecmp:shared:1.0.0.1-rc-003")</code>
+              <button class="btn-copy btn-copy-circle" onclick="copyCode('dep-1.0.0.1-rc-003')" data-copy-id="dep-1.0.0.1-rc-003" title="Copy dependency snippet">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+              </button>
             </div>
           </td>
         </tr>
 
-        <tr>
-          <td class="version-cell"><code>1.0.0</code></td>
-          <td class="message">Initial release with clean setup</td>
-          <td class="when">20 Aug 2026, 11:11 UTC<br/><span class="muted"><a href="https://github.com/Deepak-Choudharyy/CoreCMP/commit/af7e08f8cd46ad07b5a9129193cde0cd8cd3ecde" title="af7e08f8cd46ad07b5a9129193cde0cd8cd3ecde" target="_blank" class="commit-link">af7e08f</a></span></td>
+        <tr data-category="pre-release">
+          <td class="version-cell">
+            <span class="version-pill"><code>1.0.0.1-rc-002</code></span>
+          </td>
+          <td class="message">BottomSheet Optimize</td>
+          <td class="when">
+            <span class="date-text">20 Aug 2026, 11:21 UTC</span>
+            <span class="commit-sha"><a href="https://github.com/Deepak-Choudharyy/CoreCMP/commit/8bf073848f300fd9581cc642ada472ecc78db801" title="8bf073848f300fd9581cc642ada472ecc78db801" target="_blank" class="commit-link">8bf0738</a></span>
+          </td>
           <td class="code-cell">
-            <div class="code-copy-container">
-              <code class="snippet-code" id="dep-1.0.0">implementation(&quot;com.corecmp:shared:1.0.0&quot;)</code>
-              <button class="btn-copy" onclick="copyCode('dep-1.0.0')" data-copy-id="dep-1.0.0">Copy</button>
+            <div class="code-copy-container inline-code-box">
+              <code class="snippet-code inline-code-text" id="dep-1.0.0.1-rc-002">implementation("com.corecmp:shared:1.0.0.1-rc-002")</code>
+              <button class="btn-copy btn-copy-circle" onclick="copyCode('dep-1.0.0.1-rc-002')" data-copy-id="dep-1.0.0.1-rc-002" title="Copy dependency snippet">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-category="stable">
+          <td class="version-cell">
+            <span class="version-pill"><code>1.0.0</code></span>
+          </td>
+          <td class="message">Initial release with clean setup</td>
+          <td class="when">
+            <span class="date-text">20 Aug 2026, 11:11 UTC</span>
+            <span class="commit-sha"><a href="https://github.com/Deepak-Choudharyy/CoreCMP/commit/af7e08f8cd46ad07b5a9129193cde0cd8cd3ecde" title="af7e08f8cd46ad07b5a9129193cde0cd8cd3ecde" target="_blank" class="commit-link">af7e08f</a></span>
+          </td>
+          <td class="code-cell">
+            <div class="code-copy-container inline-code-box">
+              <code class="snippet-code inline-code-text" id="dep-1.0.0">implementation("com.corecmp:shared:1.0.0")</code>
+              <button class="btn-copy btn-copy-circle" onclick="copyCode('dep-1.0.0')" data-copy-id="dep-1.0.0" title="Copy dependency snippet">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+              </button>
             </div>
           </td>
         </tr>
@@ -600,8 +1176,10 @@
     </div>
   </main>
 
+  <div id="toast-container" class="toast-container"></div>
+
   <footer>
-    <p>Powered by GitHub Pages Maven Repository plugin. Dashboard design by CoreCmp.</p>
+    <p>Powered by GitHub Pages Maven Repository plugin. Crafted beautifully by <a href="https://github.com/Deepak-Choudharyy/CoreCMP" target="_blank">CoreCmp</a>.</p>
   </footer>
 </body>
 </html>

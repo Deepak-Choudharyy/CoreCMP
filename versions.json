@@ -1,12 +1,19 @@
 {
   "groupId": "com.corecmp",
   "artifactId": "shared",
-  "latest": "1.0.0.1-rc-002",
+  "latest": "1.0.0.1-rc-003",
   "versions": [
+    "1.0.0.1-rc-003",
     "1.0.0.1-rc-002",
     "1.0.0"
   ],
   "releases": [
+    {
+      "version": "1.0.0.1-rc-003",
+      "message": "Upgrade dashboard UI to premium theme",
+      "publishedAt": "2026-08-20T11:28:41Z",
+      "commit": "d6b1d3209d49041e3f27434eab5a79a43ee72a3c"
+    },
     {
       "version": "1.0.0.1-rc-002",
       "message": "BottomSheet Optimize",
@@ -21,6 +28,6 @@
     }
   ],
   "repository": "https://deepak-choudharyy.github.io/CoreCMP/maven-repo/",
-  "updatedAt": "2026-08-20T11:21:39Z",
+  "updatedAt": "2026-08-20T11:29:06Z",
   "failures": []
 }
