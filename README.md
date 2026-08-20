@@ -1,8 +1,6 @@
 <p align="center">
-  <img src="assets/logo.png" width="180"/>
+  <img src="assets/logo.png" width="420"/>
 </p>
-
-<h1 align="center">CoreCmp</h1>
 
 <p align="center">
   Kotlin Multiplatform Toolkit for API, UI, Permissions, Media Picker & PDF Generation
