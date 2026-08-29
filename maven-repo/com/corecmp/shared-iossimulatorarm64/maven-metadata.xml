@@ -3,12 +3,13 @@
   <groupId>com.corecmp</groupId>
   <artifactId>shared-iossimulatorarm64</artifactId>
   <versioning>
-    <latest>1.0.0.1-rc-012</latest>
-    <release>1.0.0.1-rc-012</release>
+    <latest>1.0.0.1-rc-013</latest>
+    <release>1.0.0.1-rc-013</release>
     <versions>
       <version>1.0.0</version>
       <version>1.0.0.1-rc-012</version>
+      <version>1.0.0.1-rc-013</version>
     </versions>
-    <lastUpdated>20260829045741</lastUpdated>
+    <lastUpdated>20260829050424</lastUpdated>
   </versioning>
 </metadata>
