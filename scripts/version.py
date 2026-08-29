@@ -95,6 +95,11 @@ def write_version_file(path: Path, version: str, root: Path | None = None) -> No
     path.write_text(f"version={version}\n")
     if root is not None:
         write_build_info(root, version)
+        gradle_props = root / "gradle.properties"
+        if gradle_props.exists():
+            lines = gradle_props.read_text().splitlines()
+            new_lines = [f"corecmp.version={version}" if l.startswith("corecmp.version=") else l for l in lines]
+            gradle_props.write_text("\n".join(new_lines) + "\n")
 
 
 def describe_next(value: str) -> str:

@@ -19,12 +19,6 @@ val skipIosTargets =
 group = "com.corecmp"
 
 fun readCoreCmpVersion(): String {
-    val fromProperty = findProperty("corecmp.version")?.toString()
-    if (!fromProperty.isNullOrBlank()) return fromProperty
-
-    val fromEnv = System.getenv("RELEASE_VERSION")?.takeIf { it.isNotBlank() }
-    if (fromEnv != null) return fromEnv
-
     val versionFile = rootProject.file("version.properties")
     if (versionFile.exists()) {
         versionFile.readLines()
@@ -34,6 +28,13 @@ fun readCoreCmpVersion(): String {
             ?.takeIf { it.isNotEmpty() }
             ?.let { return it }
     }
+
+    val fromProperty = findProperty("corecmp.version")?.toString()
+    if (!fromProperty.isNullOrBlank()) return fromProperty
+
+    val fromEnv = System.getenv("RELEASE_VERSION")?.takeIf { it.isNotBlank() }
+    if (fromEnv != null) return fromEnv
+
     return "1.0.0.1-rc-001"
 }
 

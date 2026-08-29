@@ -968,16 +968,16 @@
           </span>
         </div>
         <div class="card-value" style="font-family: var(--font-mono); color: #34d399; font-size: 1.8rem;">
-          1.0.0.1-rc-013
+          1.0.0.1-rc-014
         </div>
-        <div class="card-subtext">Synchronized: <span style="color: var(--text-primary)">29 Aug 2026, 05:07 UTC</span></div>
+        <div class="card-subtext">Synchronized: <span style="color: var(--text-primary)">29 Aug 2026, 05:08 UTC</span></div>
       </div>
 
       <!-- Card 2: Release Interval -->
       <div class="card card-stats">
         <div class="card-label">Deploy Frequency</div>
-        <div class="card-value" style="color: #a5b4fc;">Every 17.5 hours</div>
-        <div class="card-subtext">Total cataloged releases: <span style="color: var(--text-primary)">13</span></div>
+        <div class="card-value" style="color: #a5b4fc;">Every 16.1 hours</div>
+        <div class="card-subtext">Total cataloged releases: <span style="color: var(--text-primary)">14</span></div>
       </div>
 
       <!-- Card 3: Library Details -->
@@ -997,11 +997,11 @@
       <div class="card card-build">
         <div class="card-label">Latest Build Status</div>
         <div class="card-value">
-          <span class="status-badge warning">
-            <span class="status-indicator warning"></span> IN PROGRESS
+          <span class="status-badge success">
+            <span class="status-indicator success"></span> PASSING
           </span>
         </div>
-        <div class="card-subtext">Building version 1.0.0.1-rc-014...</div>
+        <div class="card-subtext">Ready for integration</div>
       </div>
     </section>
 
@@ -1106,7 +1106,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
             Copy
           </button>
-          <pre><code id="snippet-dep-kotlin">implementation(&quot;com.corecmp:shared:1.0.0.1-rc-013&quot;)</code></pre>
+          <pre><code id="snippet-dep-kotlin">implementation(&quot;com.corecmp:shared:1.0.0.1-rc-014&quot;)</code></pre>
         </div>
 
         <div id="dep-groovy" class="tab-content" data-tab-content-group="dep">
@@ -1114,7 +1114,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
             Copy
           </button>
-          <pre><code id="snippet-dep-groovy">implementation &#x27;com.corecmp:shared:1.0.0.1-rc-013&#x27;</code></pre>
+          <pre><code id="snippet-dep-groovy">implementation &#x27;com.corecmp:shared:1.0.0.1-rc-014&#x27;</code></pre>
         </div>
 
         <div id="dep-maven" class="tab-content" data-tab-content-group="dep">
@@ -1125,7 +1125,7 @@
           <pre><code id="snippet-dep-maven">&lt;dependency&gt;
   &lt;groupId&gt;com.corecmp&lt;/groupId&gt;
   &lt;artifactId&gt;shared&lt;/artifactId&gt;
-  &lt;version&gt;1.0.0.1-rc-013&lt;/version&gt;
+  &lt;version&gt;1.0.0.1-rc-014&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
         </div>
       </div>
@@ -1162,7 +1162,26 @@
           
         <tr class="latest-row" data-category="latest">
           <td class="version-cell">
-            <span class="version-pill"><code>1.0.0.1-rc-013</code></span> <span class="badge badge-success">latest</span>
+            <span class="version-pill"><code>1.0.0.1-rc-014</code></span> <span class="badge badge-success">latest</span>
+          </td>
+          <td class="message">Add code playground to dashboard</td>
+          <td class="when">
+            <span class="date-text">29 Aug 2026, 05:07 UTC</span>
+            <span class="commit-sha"><a href="https://github.com/Deepak-Choudharyy/CoreCMP/commit/51818a96c2b0e7e3a79ce08de3de2633086d7cca" title="51818a96c2b0e7e3a79ce08de3de2633086d7cca" target="_blank" class="commit-link">51818a9</a></span>
+          </td>
+          <td class="code-cell">
+            <div class="code-copy-container inline-code-box">
+              <code class="snippet-code inline-code-text" id="dep-1.0.0.1-rc-014">implementation("com.corecmp:shared:1.0.0.1-rc-014")</code>
+              <button class="btn-copy btn-copy-circle" onclick="copyCode('dep-1.0.0.1-rc-014')" data-copy-id="dep-1.0.0.1-rc-014" title="Copy dependency snippet">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-category="pre-release">
+          <td class="version-cell">
+            <span class="version-pill"><code>1.0.0.1-rc-013</code></span>
           </td>
           <td class="message">Auto release 1.0.0.1-rc-013</td>
           <td class="when">
